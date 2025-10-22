@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>California Natural Hazard Disclosure Statement</title>
+  <style>
+    /* --- Typography & Layout --- */
+    html, body { margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 14px; line-height: 1.5; margin: 30px; }
+    h1 { text-align: center; font-size: 18px; text-transform: uppercase; margin: 0 0 12px; }
+    .section-title { font-weight: bold; margin-top: 24px; font-size: 15px; }
+    .muted { color:#666; font-size:12px; margin-top:6px; }
+
+    /* --- Tables --- */
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; table-layout: fixed; }
+    th, td { text-align: left; vertical-align: top; padding: 8px; border: 1px solid #000; word-wrap: break-word; white-space: normal; }
+    .hazard-matrix th { background: #f7f7f7; }
+
+    /* Fit matrix to one page */
+    .hazard-matrix { font-size: 12px; }
+    .hazard-matrix th, .hazard-matrix td { padding: 6px; }
+    .hazard-matrix td:nth-child(1),
+    .hazard-matrix td:nth-child(3),
+    .hazard-matrix td:nth-child(5) { width: 22px; }
+
+    /* NHDS official form styling */
+    .nhds-form { font-size: 13px; padding: 60px 0 36px; }
+    .nhds-form-continued { font-size: 13px; padding: 60px 0 36px; }
+    .hazard-block.liquefaction { margin-top: 16px; padding-top: 0; }
+    .nhds-signoff { margin-top: 26px; }
+    .nhds-form h1 { font-size: 18px; text-transform: uppercase; margin-bottom: 10px; }
+    .nhds-intro { margin: 8px 0; }
+    .nhds-paragraph { margin: 10px 0; }
+    .form-blank { display: inline-block; min-width: 110px; border-bottom: 1px solid #000; padding: 2px 6px; background: #e6edff; }
+    .form-blank.short { min-width: 90px; }
+    .form-blank.address { min-width: 320px; }
+    .hazard-block { margin-top: 16px; page-break-inside: avoid; break-inside: avoid; }
+    .hazard-block p { margin: 0; }
+    .hazard-options { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+    .form-choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 2px 4px; }
+    .form-choice.long { flex-basis: 100%; padding: 2px 4px; }
+    .choice-highlight { background: #e6edff; border-radius: 3px; display: inline-flex; align-items: center; }
+    .form-choice.long { flex-basis: 100%; }
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border: 1px solid #000; 
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1;
+      color: transparent;
+      font-family: 'Segoe UI Symbol', Arial, sans-serif;
+    }
+    .checkbox::after {
+      content: "";
+      line-height: 1;
+    }
+    .checkbox.checked {
+      border-color: #000;
+      color: #000;
+      font-weight: bold;
+    }
+    .checkbox.checked::after {
+      content: "\2714";
+      color: #000;
+    }
+    /* --- Page & Flow Controls --- */
+    .page {
+      position: relative;
+      page-break-after: always;
+      padding: 40px 0 72px; /* reserve space for fixed footer */
+      box-sizing: border-box;
+    }
+    .cover { text-align: center; page-break-after: always; }
+    .cover img.logo { height: 200px; margin-bottom: 16px; }
+    .cover-footer { margin-top: 28px; font-size: 12px; color: #666; }
+
+    tr, td, th { page-break-inside: avoid; }
+    p, div { page-break-inside: auto; }
+
+    .disclaimer { font-size: 12px; margin-top: 18px; }
+    .signature-block { margin-top: 22px; text-align: left; }
+    .signature-block label { display: block; margin-top: 10px; }
+    .signature-pad { border: 1px solid #ccc; width: 300px; height: 80px; margin-top: 4px; }
+
+    /* SOURCES and CONTACT page rules */
+    .sources-page {
+      page-break-before: always;
+      page-break-after: always;  /* legacy */
+      break-after: page;          /* modern */
+      font-size: 13px;
+      margin-top: 24px;
+    }
+    .sources-page ul { margin-top: 10px; line-height: 1.6; padding-left: 18px; }
+    .sources-page h1 { font-size: 15px; text-transform: uppercase; }
+
+    .contact-page {
+      page-break-before: always;
+      break-before: page;
+      font-size: 13px;
+      margin-top: 24px;
+    }
+    .disclaimer-page {
+      page-break-before: always;
+      break-before: page;
+    }
+    .contact-page ul { margin-top: 10px; line-height: 1.6; padding-left: 18px; }
+
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: right;
+      width: 95%;
+      font-size: 11px;
+      color: #555;
+      z-index: 0;
+    }
+
+    /* Appendix & Addendum styling */
+    .appendix { page-break-before: always; }
+    .appendix h1 { margin-bottom: 8px; font-size: 18px; text-transform: uppercase; }
+    .appendix .intro { color:#333; font-size:13px; margin-bottom: 10px; }
+    .appendix .ai-note { font-size: 12px; margin-top: 10px; }
+    .ai-validation { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: bold; color: #333; margin: 8px 0; flex-wrap: wrap; }
+    .ai-validation.muted { color: #555; font-weight: normal; }
+    .ai-validation .ai-validation-label { white-space: nowrap; }
+    .ai-validation .ai-validation-badge { display: inline-flex; align-items: center; justify-content: center; }
+    .ai-validation .ai-validation-badge svg,
+    .ai-validation .ai-validation-badge img { height: 18px; width: auto; }
+    .ai-validation .ai-validation-badge img { display: block; }
+    .appendix .ai-validation { margin-top: 12px; }
+    .appendix .ai-validation .ai-validation-seal { font-size: 14px; }
+    .appendix table { font-size: 12px; } /* Smart-Verify matrix font size */
+    /* Hazard map page */
+    .hazard-map-page { page-break-before: always; break-before: page; }
+    .hazard-map-page h2 { font-size: 18px; text-transform: uppercase; margin: 0 0 16px; }
+    .hazard-map-container { position: relative; margin: 18px 0; }
+    .hazard-map-container.has-inset { padding-right: 30%; }
+    .hazard-map-main { width: 100%; height: auto; border: 1px solid #000; }
+    .hazard-map-inset { position: absolute; top: 16px; right: 16px; width: 28%; min-width: 160px; border: 1px solid #000; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+    .legend { margin-top: 12px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+    .legend .swatch { display: inline-block; width: 16px; height: 16px; border: 1px solid #000; margin-right: 6px; vertical-align: middle; }
+    .legend .swatch.liquefy { background: rgba(255, 138, 0, 0.35); }
+    .legend .swatch.parcel { background: rgba(0, 102, 255, 0.15); }
+    .legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #d0021b; border: 1px solid #000; margin-right: 6px; }
+    .hazard-map-page .credits { margin-top: 14px; font-size: 12px; color: #555; }
+    .hazard-map-page .hazard-note { font-size: 12px; color: #555; margin-top: 12px; }
+    @media print {
+      .hazard-map-inset { box-shadow: none; }
+      .env-page-header,
+      .env-page-header * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+
+    /* NEW: ensure ENV addendum is a separate page & same matrix font size */
+    .env-page {
+      page-break-before: always;   /* legacy */
+      break-before: page;          /* modern */
+      padding: 28px 0 36px;        /* balanced vertical buffer */
+    }
+    .env-page.env-page-continued {
+      padding-top: 28px;
+    }
+    .env-section-group { }
+    .env-page-header {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      text-align: center;
+      margin-bottom: 16px;
+      page-break-after: avoid;
+      break-after: avoid;
+      padding: 0 0 4px;
+    }
+    .env-page-header h1 {
+      margin: 0;
+      padding-top: 2px;
+    }
+    .env-page h1 { font-size: 18px; text-transform: uppercase; }
+    .env-matrix {
+      font-size: 12px; /* match Smart-Verify matrix */
+      page-break-inside: avoid;
+      break-inside: avoid;
+      -webkit-region-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+    .env-matrix-block {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      -webkit-region-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin-top: 18px;
+    }
+    .env-matrix-block.env-low-cost h2,
+    .env-matrix-block.env-low-cost h3,
+    .env-matrix-block.env-low-cost p > strong {
+      font-size: 18px;
+    }
+    .env-page .env-matrix-block:first-of-type,
+    .env-matrix-block.env-matrix-block-first {
+      margin-top: 0;
+    }
+    .env-matrix-block.env-matrix-block-first {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+    .env-retrofit-list { margin: 8px 0 0; padding-left: 20px; }
+    .env-retrofit-list li { margin-bottom: 6px; }
+
+    .badge { display:inline-block; padding: 2px 6px; border:1px solid #000; font-size: 11px; margin-left: 6px; }
+
+    /* Hard page-break utility + Terms typography */
+    .hardbreak {
+      height: 0; margin: 0; padding: 0; border: 0;
+      page-break-before: always; /* legacy */
+      break-before: page;        /* modern */
+      clear: both;
+    }
+    .sig-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px 24px; }
+    .sig-box  { min-height:90px; border:1px solid #bbb; padding:8px; }
+    .sig-cap  { font-weight:bold; margin:8px 0 6px; }
+    .page-break { page-break-before: always; break-before: page; }
+    .terms,
+    .terms-continued { page-break-before: always; break-before: page; padding-top: 40px; }
+    .terms p { font-size: 13px; line-height: 1.5; margin: 10px 0; }
+    .terms .section-title { margin-top: 18px; font-size: 15px; font-weight: bold; }
+
+    .terms-list { margin-top: 16px; }
+
+    .terms .terms-heading,
+
+    .terms-continued .terms-heading { font-size: 13px; font-weight: bold; margin: 14px 0 4px; }
+
+    .terms .terms-heading:first-child,
+
+    .terms-continued .terms-heading:first-child { margin-top: 0; }
+
+    .terms .terms-sub,
+
+    .terms-continued .terms-sub { font-size: 13px; margin: 4px 0 4px 18px; font-weight: normal; }
+
+    .terms .terms-sub.indent,
+
+    .terms-continued .terms-sub.indent { margin-left: 36px; }
+
+
+
+    /* (new) tiny, invisible Zoho Sign text-tag styling */
+    .zsign-tag { font-size: 1px; color: #fff; letter-spacing: 0; }
+  </style>
+</head>
+<body>
+
+  {%- comment -%} ===== Plan helpers (basic / standard / advanced) ===== {%- endcomment -%}
+  {%- assign package_raw = package_type | default: package | default: packageTier | default: bundle | default: reportBundle | default: '' | downcase -%}
+  {%- assign package = package_raw -%}
+  {%- if package == '' -%}
+    {%- if show_env_section -%}
+      {%- assign package = 'standard' -%}
+    {%- else -%}
+      {%- assign package = 'basic' -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- assign is_standard = show_env_section or (package == 'standard') or (package == 'advanced') -%}
+
+  {%- assign _city_text = city | default: '' -%}
+  {%- if _city_text == '' and address -%}
+    {%- assign _addr_parts = address | split: ',' -%}
+    {%- if _addr_parts.size > 1 -%}
+      {%- assign _city_text = _addr_parts[1] | strip -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- comment -%} ====================== COVER ====================== {%- endcomment -%}
+  {% if show_cover or show_cover == nil %}
+  <div class="cover">
+    <img class="logo"
+         src="{{ cover_image_url | default: 'https://static.wixstatic.com/media/39685c_b04a1f9211434ec0b2efe6773e138d94~mv2.png' }}"
+         alt="{{ brand_name | default: 'SafeCanopyAI' }}" />
+
+    <h1>
+      California Natural Hazard Disclosure Statement
+      <span class="badge">
+        {%- if package == 'advanced' -%}ADVANCED
+        {%- elsif is_standard -%}STANDARD
+        {%- else -%}BASIC
+        {%- endif -%}
+      </span>
+    </h1>
+
+    <p class="muted">Reference # {{ report_id | default: "" }}</p>
+
+    {% if is_apn_mode %}
+      <p>
+        <strong>Parcel / APN:</strong>
+        {{ apn | default: "" }}
+        {% if tax_apn %}
+          &nbsp;&bull;&nbsp;<strong>Tax APN (unit):</strong> {{ tax_apn }}
+        {% endif %}
+      </p>
+      {% if apn_source_line %}
+        <p class="muted">{{ apn_source_line }}</p>
+      {% endif %}
+      {% if apn and tax_apn %}
+        <p class="muted">
+          APN &amp; Tax APN {% if apn_same_as_tax %}match{% else %}do not match{% endif %}.
+          {% if apn_source_line %}{{ apn_source_line }}{% endif %}
+        </p>
+      {% endif %}
+    {% else %}
+            <p><strong>Address:</strong> {{ address | default: _full_address | default: full_address | default: "" }}</p>
+    {% endif %}
+
+    <p><strong>Report Date:</strong> {{ report_date | default: "" }}</p>
+    <div class="cover-footer">For inquiries, see final page</div>
+  </div>
+  {% endif %}
+
+  {%- comment -%} ====================== MAIN ====================== {%- endcomment -%}
+  <div class="page nhds-form">
+  <h1>CALIFORNIA NATURAL HAZARD DISCLOSURE STATEMENT</h1>
+
+    <p class="nhds-intro">
+      This Natural Hazard Disclosure Statement concerns the real property situated in the City of
+      <span class="form-blank short">{{ _city_text }}</span>,
+      County of <span class="form-blank short">{{ county | default: "" }}</span>,
+      State of California, described as:
+    </p>
+
+    {% assign described_address = statement_address | default: property_descriptor | default: property_line | default: address | default: _full_address | default: full_address | default: apn | default: '' %}
+    {% assign described_address = described_address | strip %}
+    <p class="nhds-intro"><span class="form-blank address">{{ described_address }}</span></p>
+
+    <p class="nhds-paragraph">
+      This Statement is a disclosure of natural hazards relating to the above described property in compliance with Section 1102 of the California Civil Code. It is not a warranty of any kind by the seller(s) in this transaction, and is not a substitute for any inspections or warranties the buyers may wish to obtain.
+    </p>
+
+    <p class="nhds-paragraph">
+      This Natural Hazard Disclosure Statement is made pursuant to Section 1102 of the Civil Code. Other statutes may require disclosures, depending upon the details of the particular real estate transaction (for example: special study zone and purchase-money liens on residential property). In addition, there may be local disclosure requirements in your particular city or county.
+    </p>
+
+    <p class="nhds-paragraph">
+      The Seller discloses the following information with the knowledge that even though this is not a warranty, prospective Buyers may rely on this information in deciding whether and on what terms to purchase the subject property. Seller hereby authorizes any agent(s) representing any principal(s) in this action to provide a copy of this statement to any person or entity in connection with any actual or anticipated sale of the property. The following are representations made by the Seller based on their knowledge and maps drawn by the state and federal governments. This information is a disclosure and is not intended to be part of any contract between the Buyer and Seller.
+    </p>
+
+    <div class="section-title" style="margin-top: 24px;">THIS REAL PROPERTY LIES WITHIN THE FOLLOWING HAZARDOUS AREA(S):</div>
+
+    <div class="hazard-block">
+      <p><strong>A SPECIAL FLOOD HAZARD AREA</strong> (Any type Zone "A" or "V") designated by the Federal Emergency Management Agency.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if flood_zone == "yes" %} choice-highlight{% endif %}">Yes <span class="checkbox{% if flood_zone == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if flood_zone == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if flood_zone == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if flood_zone == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Do not know and information not available from local jurisdiction <span class="checkbox{% if flood_zone == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+    </div>
+
+    <div class="hazard-block">
+      <p><strong>AN AREA OF POTENTIAL FLOODING</strong> shown on a dam failure inundation map.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if dam_inundation == "yes" %} choice-highlight{% endif %}">Yes <span class="checkbox{% if dam_inundation == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if dam_inundation == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if dam_inundation == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if dam_inundation == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Do not know and information not available from local jurisdiction <span class="checkbox{% if dam_inundation == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+    </div>
+
+    <div class="hazard-block">
+      <p><strong>A VERY HIGH FIRE HAZARD SEVERITY ZONE</strong> pursuant to Section 51178 or 51179 of the Government Code. The owner of this property is subject to the maintenance requirements of Section 51182 of the Government Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if vhfhsz == "yes" %} choice-highlight{% endif %}">Yes <span class="checkbox{% if vhfhsz == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if vhfhsz == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if vhfhsz == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if vhfhsz == "Do not know" or vhfhsz == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Do not know and information not available from local jurisdiction <span class="checkbox{% if vhfhsz == "Do not know" or vhfhsz == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+    </div>
+
+    <div class="hazard-block">
+      <p><strong>A WILDLAND AREA THAT MAY CONTAIN SUBSTANTIAL FOREST FIRE RISKS AND HAZARDS</strong> pursuant to Section 4125 of the Public Resources Code. The owner of this property is subject to the maintenance requirements of Section 4291 of the Public Resources Code. Additionally, it is not the state's responsibility to provide fire protection services to any building or structure located within the wildlands unless the Department of Forestry and Fire Protection has entered into a cooperative agreement with a local agency for those purposes pursuant to Section 4142 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if wildland_fire == "yes" %} choice-highlight{% endif %}">Yes <span class="checkbox{% if wildland_fire == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if wildland_fire == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if wildland_fire == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if wildland_fire == "Do not know" or wildland_fire == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Do not know and information not available from local jurisdiction <span class="checkbox{% if wildland_fire == "Do not know" or wildland_fire == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page nhds-form nhds-form-continued">
+    <div class="hazard-block">
+      <p><strong>AN EARTHQUAKE FAULT ZONE</strong> pursuant to Section 2622 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if fault_zone == "yes" %} choice-highlight{% endif %}">Yes <span class="checkbox{% if fault_zone == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if fault_zone == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if fault_zone == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if fault_zone == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Do not know and information not available from local jurisdiction <span class="checkbox{% if fault_zone == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+
+    <div class="hazard-block">
+      <p><strong>A SEISMIC HAZARD ZONE: LANDSLIDE</strong> pursuant to Section 2696 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if seismic_landslide == "yes" %} choice-highlight{% endif %}">Yes (Landslide Zone) <span class="checkbox{% if seismic_landslide == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if seismic_landslide == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if seismic_landslide == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if seismic_landslide == "Map not yet released by state" or seismic_landslide == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Map not yet released by state <span class="checkbox{% if seismic_landslide == "Map not yet released by state" or seismic_landslide == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+    </div>
+    <div class="hazard-block liquefaction">
+      <p><strong>A SEISMIC HAZARD ZONE: LIQUEFACTION</strong> pursuant to Section 2696 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice{% if seismic_liquefaction == "yes" %} choice-highlight{% endif %}">Yes (Liquefaction Zone) <span class="checkbox{% if seismic_liquefaction == "yes" %} checked{% endif %}"></span></span>
+        <span class="form-choice{% if seismic_liquefaction == "no" %} choice-highlight{% endif %}">No <span class="checkbox{% if seismic_liquefaction == "no" %} checked{% endif %}"></span></span>
+        <span class="form-choice long{% if seismic_liquefaction == "Map not yet released by state" or seismic_liquefaction == "Do not know and information not available from local jurisdiction" %} choice-highlight{% endif %}">Map not yet released by state <span class="checkbox{% if seismic_liquefaction == "Map not yet released by state" or seismic_liquefaction == "Do not know and information not available from local jurisdiction" %} checked{% endif %}"></span></span>
+      </div>
+    </div>
+
+    <div class="nhds-signoff">
+      <div class="disclaimer">
+        These hazards may limit your ability to develop the real property, to obtain insurance, or to receive assistance after a disaster. The maps on which these disclosures are based estimate where natural hazards exist. They are not definitive indicators of whether or not a property will be affected by a natural disaster. Buyer(s) and Seller(s) may wish to obtain professional advice regarding those hazards and other hazards that may affect the property. Seller represents that the information herein is true and correct to the best of the Seller''s knowledge as of the date signed by the Seller.
+      </div>
+
+      <div class="signature-block">
+        <label>Signature of Seller:</label>
+        <div class="signature-pad">
+          <span class="zsign-tag">{% raw %}{{Signature}}{% endraw %}</span>
+        </div>
+        <label>Date:
+          <span class="zsign-tag">{% raw %}{{Date}}{% endraw %}</span>
+        </label>
+
+        <label>Signature of Buyer:</label>
+        <div class="signature-pad">
+          <span class="zsign-tag">{% raw %}{{Signature:Recipient2}}{% endraw %}</span>
+        </div>
+        <label>Date:
+          <span class="zsign-tag">{% raw %}{{Date:Recipient2}}{% endraw %}</span>
+        </label>
+      </div>
+
+      {%- assign s_size = extra_sellers | size | plus: 0 -%}
+      {%- assign b_size = extra_buyers  | size | plus: 0 -%}
+      {%- assign max_n = s_size -%}
+      {%- if b_size > max_n -%}{%- assign max_n = b_size -%}{%- endif -%}
+
+      {%- if max_n > 0 -%}
+        <div class="page-break"></div>
+        <h3>Additional Signatures</h3>
+        <div class="sig-grid">
+          {%- comment -%} Emit anchors that match Zoho role names for extra sellers/buyers {%- endcomment -%}
+          {%- for i in (1..max_n) -%}
+            {%- if i <= s_size -%}
+              {%- assign seller_index = i | plus: 1 -%}
+              <div>
+                <div class="sig-cap">Signature of Seller {{ i }}</div>
+                <div class="sig-box"><span class="zsign-tag">{{ "{{SIGNATURE:Seller" }}{{ seller_index }}{{ "}}" }}</span></div>
+                <div style="margin-top:6px;">Date</div>
+                <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{ "{{DATE:Seller" }}{{ seller_index }}{{ "}}" }}</span></div>
+              </div>
+            {%- endif -%}
+
+            {%- if i <= b_size -%}
+              {%- assign buyer_index = i | plus: 1 -%}
+              <div>
+                <div class="sig-cap">Signature of Buyer {{ i }}</div>
+                <div class="sig-box"><span class="zsign-tag">{{ "{{SIGNATURE:Buyer" }}{{ buyer_index }}{{ "}}" }}</span></div>
+                <div style="margin-top:6px;">Date</div>
+                <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{ "{{DATE:Buyer" }}{{ buyer_index }}{{ "}}" }}</span></div>
+              </div>
+            {%- endif -%}
+
+            {%- if forloop.index % 6 == 0 and forloop.index < forloop.length -%}
+              </div><div class="page-break"></div><div class="sig-grid">
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- comment -%} ====================== SMART-VERIFY NHDS APPENDIX ====================== {%- endcomment -%}
+  {% if smart_verify %}
+    <div class="appendix">
+      <h1>SMART-VERIFY NHDS APPENDIX <span class="badge">AI</span></h1>
+      {% assign _smart_verify_appendix_html = smart_verify_appendix_html | default: appendix_html | default: '' | strip %}
+      {% if _smart_verify_appendix_html != '' %}
+        {{ _smart_verify_appendix_html | raw }}
+      {% endif %}
+      <div class="intro">
+        Smart-Verify reconciles authoritative agency layers (FEMA, CGS, CAL FIRE, Cal OES) into a single answer per item.
+        Where official maps are not released or inconclusive, results are conservative (&ldquo;Do not know&rdquo;).
+      </div>
+
+      <table>
+        <tr>
+          <th>Hazard</th>
+          <th>Answer</th>
+          <th>Why</th>
+          <th>Source</th>
+          <th>Map Updated</th>
+        </tr>
+
+        {% assign order = "flood,dam,vhfhsz,wildland,fault,landslide,liquefaction" | split: "," %}
+        {% for k in order %}
+          {% assign h = smart_verify[k] %}
+          {% if h %}
+            <tr>
+              <td>{{ h.label }}</td>
+              <td>{{ h.final_answer | default: "" | capitalize }}</td>
+              <td>{{ h.rationale | strip | default: "Official maps for this location support this answer." }}</td>
+              <td>
+                {{ h.primary_source }}
+                {% if h.secondary_sources and h.secondary_sources.size > 0 %}
+                  ; Backup: {{ h.secondary_sources | join: ", " }}
+                {% endif %}
+              </td>
+              <td>{{ h.map_last_updated | default: "" }}</td>
+            </tr>
+            {% if h.obligations and h.obligations.size > 0 %}
+              <tr>
+                <td colspan="5"><em>Obligations:</em> {{ h.obligations | join: "; " }}</td>
+              </tr>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </table>
+
+      {% assign smart_verify_note_text = smart_verify_validation_note | default: smart_verify_validation.note | default: 'Smart-Verify resolves conflicts internally and presents a single defensible answer per hazard. Official agency sources are prioritized over commercial datasets when conflicts occur.' %}
+
+      {% if _smart_verify_appendix_html == '' %}
+        {% assign _status = smart_verify_validation_status | default: smart_verify_validation.status | default: '' | downcase %}
+        {% assign _tagline = smart_verify_validation_tagline | default: smart_verify_validation.tagline | default: 'Verification Executed' %}
+        {% assign _badge = smart_verify_validation_badge_html | default: smart_verify_validation.badge_html | default: '' | strip %}
+        {% assign _badge_url = smart_verify_validation_badge_url | default: smart_verify_validation.badge_url | default: 'https://static.wixstatic.com/media/39685c_6a3f78185f7d46d6888398fa0dcac0d7~mv2.png' %}
+
+        {% if _badge != '' %}
+          {{ _badge | raw }}
+        {% else %}
+          {% if _status == 'validated' %}
+            <div class="ai-validation" style="display:flex;align-items:center;gap:6px;margin:8px 0;">
+              <img src="{{ _badge_url }}" alt="Verification badge" style="width:16px;height:16px;" />
+              <strong>{{ _tagline }}</strong>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+
+      {% if smart_verify_note_text != '' %}
+        <p class="ai-note muted">Notes: {{ smart_verify_note_text }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% assign _hazardMapMain = hazardMapUrl %}
+  {% assign _hazardMapInset = hazardMapInsetUrl | default: hazardInsetMapUrl %}
+  {% assign _hazardMapLegend = hazardMapLegend.entries | default: hazardMapLegend %}
+  {% if is_standard and (_hazardMapMain or _hazardMapInset or hazardMapSummary) %}
+    <div class="page hazard-map-page">
+      <h2>{{ hazardMapTitle | default: 'NHDS Hazard Map' }}</h2>
+      {% if _hazardMapMain or _hazardMapInset %}
+        <div class="hazard-map-container{% if _hazardMapInset %} has-inset{% endif %}">
+          {% if _hazardMapMain %}
+            <img class="hazard-map-main" src="{{ _hazardMapMain | escape }}" alt="Hazard map" />
+          {% endif %}
+          {% if _hazardMapInset %}
+            <img class="hazard-map-inset" src="{{ _hazardMapInset | escape }}" alt="Inset hazard map" />
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if _hazardMapLegend and _hazardMapLegend.size > 0 %}
+        <div class="legend">
+          {% for entry in _hazardMapLegend %}
+            {% assign _legend_label = entry.label | default: entry.name | default: '' %}
+            {% assign _legend_kind = entry.kind | default: entry.type | default: entry.shape | default: '' %}
+            {% assign _legend_fill = entry.fill | default: entry.color | default: entry.swatch | default: '' %}
+            {% assign _legend_stroke = entry.stroke | default: entry.outline | default: entry.border | default: '' %}
+            {% if _legend_label != '' %}
+              {% if _legend_kind == 'point' or _legend_kind == 'marker' or entry.icon %}
+                <span>
+                  <span class="dot" style="{% if _legend_fill != '' %}background: {{ _legend_fill }};{% endif %}{% if _legend_stroke != '' %} border-color: {{ _legend_stroke }};{% endif %}"></span>
+                  {{ _legend_label }}
+                </span>
+              {% else %}
+                <span>
+                  <span class="swatch" style="{% if _legend_fill != '' %}background: {{ _legend_fill }};{% endif %}{% if _legend_stroke != '' %} border-color: {{ _legend_stroke }};{% endif %}"></span>
+                  {{ _legend_label }}
+                </span>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elsif _hazardMapMain or _hazardMapInset %}
+        <div class="legend">
+          <span><span class="swatch liquefy"></span> Liquefaction Zone</span>
+          <span><span class="swatch parcel"></span> Parcel</span>
+          <span><span class="dot"></span> Subject Property</span>
+        </div>
+      {% endif %}
+      {% if hazardMapSummary %}
+        <div class="hazard-note">
+          {% if hazardMapSummary.title %}
+            <strong>{{ hazardMapSummary.title }}</strong>
+          {% endif %}
+          {% if hazardMapSummary.intro %}
+            <p>{{ hazardMapSummary.intro }}</p>
+          {% endif %}
+          {% if hazardMapSummary.items and hazardMapSummary.items.size > 0 %}
+            <ul>
+              {% for item in hazardMapSummary.items %}
+                {% assign _item_label = item.label | default: item.name | default: '' %}
+                {% assign _item_value = item.value | default: item.text | default: '' %}
+                {% if _item_label != '' %}
+                  <li>{{ _item_label }}{% if _item_value != '' %}: {{ _item_value }}{% endif %}</li>
+                {% else %}
+                  <li>{{ item }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% elsif hazardMapSummary.points and hazardMapSummary.points.size > 0 %}
+            <ul>
+              {% for item in hazardMapSummary.points %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          {% elsif hazardMapSummary.text %}
+            <p>{{ hazardMapSummary.text }}</p>
+          {% else %}
+            <p>{{ hazardMapSummary }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% assign _hazardCreditsList = hazardMapCredits.items | default: hazardMapCredits.list | default: '' %}
+      {% if hazardMapCredits %}
+        {% if hazardMapCredits.text %}
+          <p class="credits">{{ hazardMapCredits.text }}</p>
+        {% elsif _hazardCreditsList %}
+          <p class="credits">{{ _hazardCreditsList | join: '; ' }}</p>
+        {% else %}
+          <p class="credits">{{ hazardMapCredits }}</p>
+        {% endif %}
+      {% else %}
+        <p class="credits">Basemap &copy; Google. Hazard overlays &copy; CGS and CAL OES. Generated {{ hazardMapGeneratedOn | default: generatedOn | default: '' }}.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {%- comment -%} ====================== ENVIRONMENTAL RISK ADDENDUM STANDARD ====================== {%- endcomment -%}
+  {% if is_standard %}
+    {%- capture _fire_history_section -%}
+      {% if env_smart_verify_rows and env_smart_verify_rows.size > 0 %}
+        <div class="env-matrix-block env-matrix-block-first">
+          <div class="section-title">Fire History</div>
+
+          <table class="env-matrix">
+          <tr>
+            <th style="width:19%">Item</th>
+            <th style="width:16%">Answer</th>
+            <th style="width:49%">Explanation</th>
+            <th style="width:16%">Map Updated</th>
+          </tr>
+
+          {%- comment -%} Fire History first {%- endcomment -%}
+          {% for r in env_smart_verify_rows %}
+            {% assign _it = r.item | default: '' %}
+            {% if _it contains 'Fire History' %}
+              {% assign _fh_updated = r.map_updated_text | default: fire_history_map_updated | default: 'approx. 2024' %}
+              <tr>
+                <td>{{ r.item }}</td>
+                <td>{{ r.answer_text }}</td>
+                <td>{{ r.explanation_text | default: r.rationale_text }}</td>
+                <td>{{ _fh_updated }}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+
+          {%- comment -%} Then all other items EXCEPT Fire History, Radon, Tsunami, Superfund, Oil & Gas, Right-to-Farm, Lead-based Paint, FUDS, NOA, and Megan's Law {%- endcomment -%}
+          {% for r in env_smart_verify_rows %}
+            {% assign _it = r.item | default: '' %}
+            {% unless _it contains 'Fire History' or _it contains 'Radon' or _it contains 'Superfund' or _it contains 'Oil & Gas' or _it contains 'Aquifer Risk' or _it contains 'Mold Advisory' or _it contains 'Right-to-Farm' or _it contains 'Lead-based Paint Advisory' or _it contains 'Formerly Used Defense Sites' or _it contains 'Tsunami' or _it contains 'Naturally Occurring Asbestos Advisory' or _it contains 'Naturally Occuring Asbestos Advisory' or _it contains 'NOA Advisory' or _it contains 'Megan' %}
+              <tr>
+                <td>{{ r.item }}</td>
+                <td>{{ r.answer_text }}</td>
+                <td>{{ r.explanation_text | default: r.rationale_text }}</td>
+                <td>{{ r.map_updated_text }}</td>
+              </tr>
+            {% endunless %}
+          {% endfor %}
+          </table>
+        </div>
+      {% endif %}
+    {%- endcapture -%}
+    {%- assign _fire_history_section = _fire_history_section | strip -%}
+      {%- comment -%} Single RADON matrix prepared for first/continued pages (no Score; aligned widths) {%- endcomment -%}
+      {%- assign _radon_label   = '' -%}
+      {%- assign _radon_updated = '' -%}
+      {%- assign _radon_explain = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- if r.item and r.item contains 'Radon' -%}
+            {%- assign _radon_label   = r.answer_text | default: r.answer -%}
+            {%- assign _radon_updated = r.map_updated_text | default: r.map_updated | default: '2024' -%}
+            {%- assign _radon_explain = r.explanation_text | default: r.rationale_text -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if _radon_label == '' -%}
+        {%- assign _radon_label = radon_zone_label | default: '' -%}
+        {%- if _radon_label == '' and radon_zone_num -%}
+          {%- case radon_zone_num -%}
+            {%- when 1 -%}{%- assign _radon_label = 'Zone 1 (High potential)' -%}
+            {%- when 2 -%}{%- assign _radon_label = 'Zone 2 (Moderate potential)' -%}
+            {%- when 3 -%}{%- assign _radon_label = 'Zone 3 (Low potential)' -%}
+          {%- endcase -%}
+        {%- endif -%}
+        {%- assign _radon_updated = radon_map_updated | default: '2024' -%}
+      {%- endif -%}
+
+      {%- capture _radon_section -%}
+        {%- if _radon_label != '' -%}
+          <div class="env-matrix-block">
+            <div class="section-title">U.S. EPA Radon Zone</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>U.S. EPA Radon Zone</td>
+              <td>{{ _radon_label }}</td>
+              <td>
+                {% if _radon_explain != '' %}
+                  {{ _radon_explain }}
+                {% else %}
+                  {{ county }} County is classified as {{ _radon_label }} per the U.S. EPA Radon Zone Map ({{ _radon_updated }}).
+                  Radon testing is recommended before purchase or occupancy.
+                {% endif %}
+              </td>
+              <td>{{ _radon_updated }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _radon_section = _radon_section | strip -%}
+      {%- assign _has_radon_section = _radon_section != '' -%}
+
+      {%- comment -%} Naturally Occuring Asbestos Advisory matrix data {%- endcomment -%}
+      {%- assign _noa_item = '' -%}
+      {%- assign _noa_answer = '' -%}
+      {%- assign _noa_explain = '' -%}
+      {%- assign _noa_updated = '' -%}
+      {%- assign _noa_nearest = '' -%}
+      {%- assign _noa_distance = '' -%}
+      {%- assign _noa_context = '' -%}
+      {%- assign _noa_details = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Naturally Occurring Asbestos Advisory' or _it contains 'Naturally Occuring Asbestos Advisory' or _it contains 'NOA Advisory' -%}
+            {%- assign _noa_item = r.item | default: 'Naturally Occuring Asbestos Advisory' -%}
+            {%- assign _noa_answer = r.answer_text | default: r.answer -%}
+            {%- assign _noa_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _noa_updated = r.map_updated_text | default: r.map_updated | default: noa_source_updated -%}
+            {%- assign _noa_nearest = r.nearest_text | default: r.nearest_site_text | default: '' -%}
+            {%- assign _noa_distance = r.distance_text | default: '' -%}
+            {%- assign _noa_context = r.context_text | default: r.details_text | default: '' -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if _noa_item == '' -%}
+        {%- assign _noa_details = env_noa | default: noa -%}
+        {%- if _noa_details == '' and env -%}
+          {%- assign _noa_details = env.noa | default: '' -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if _noa_details -%}
+        {%- if _noa_item == '' -%}{%- assign _noa_item = _noa_details.item | default: 'Naturally Occuring Asbestos Advisory' -%}{%- endif -%}
+        {%- if _noa_answer == '' -%}{%- assign _noa_answer = _noa_details.answer_text | default: _noa_details.answer | default: _noa_details.status | default: '' -%}{%- endif -%}
+        {%- if _noa_explain == '' -%}{%- assign _noa_explain = _noa_details.explanation_text | default: _noa_details.summary_text | default: _noa_details.summary | default: _noa_details.rationale_text | default: _noa_details.rationale | default: '' -%}{%- endif -%}
+        {%- if _noa_updated == '' -%}{%- assign _noa_updated = _noa_details.map_updated_text | default: _noa_details.map_updated | default: _noa_details.data_updated | default: noa_source_updated -%}{%- endif -%}
+        {%- if _noa_nearest == '' -%}{%- assign _noa_nearest = _noa_details.nearest_site_text | default: _noa_details.nearest_text | default: _noa_details.nearest | default: '' -%}{%- endif -%}
+        {%- if _noa_distance == '' -%}{%- assign _noa_distance = _noa_details.distance_text | default: _noa_details.distance | default: '' -%}{%- endif -%}
+        {%- if _noa_context == '' -%}{%- assign _noa_context = _noa_details.context_text | default: _noa_details.details_text | default: '' -%}{%- endif -%}
+      {%- endif -%}
+
+      {%- assign _has_noa_section = false -%}
+      {%- if _noa_item != '' or _noa_answer != '' or _noa_explain != '' or _noa_nearest != '' or _noa_distance != '' or _noa_context != '' -%}
+        {%- assign _has_noa_section = true -%}
+      {%- endif -%}
+      {%- assign _noa_answer_display = _noa_answer | default: 'N/A' -%}
+
+      {%- capture _noa_section -%}
+        {%- if _has_noa_section -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Naturally Occuring Asbestos Advisory</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _noa_item | default: 'Naturally Occuring Asbestos Advisory' }}</td>
+              <td>{{ _noa_answer_display }}</td>
+              <td>
+                {% if _noa_explain != '' %}
+                  {{ _noa_explain }}
+                {% else %}
+                  Naturally occurring asbestos potential is summarized using the U.S. Geological Survey's NOA mapping with a one-mile advisory buffer. Disturbing soil in mapped areas may release asbestos fibers; consult qualified professionals before excavation or grading.
+                {% endif %}
+                {% if _noa_nearest != '' or _noa_distance != '' %}
+                  <br/>
+                  Nearest mapped occurrence:{% if _noa_nearest != '' %} {{ _noa_nearest }}{% endif %}{% if _noa_distance != '' %}{% if _noa_nearest != '' %} ({{ _noa_distance }}){% else %} {{ _noa_distance }}{% endif %}{% endif %}.
+                {% endif %}
+                {% if _noa_context != '' %}
+                  <br/>{{ _noa_context }}
+                {% endif %}
+              </td>
+              <td>{{ _noa_updated | default: noa_source_updated | default: 'USGS NOA' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _noa_section = _noa_section | strip -%}
+      {%- assign _has_noa_section = _noa_section != '' -%}
+
+      {%- comment -%} Tsunami Hazard Areas matrix directly below Fire History {%- endcomment -%}
+      {%- assign _tsunami_item = '' -%}
+      {%- assign _tsunami_answer = '' -%}
+      {%- assign _tsunami_explain = '' -%}
+      {%- assign _tsunami_updated = '' -%}
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Tsunami' -%}
+            {%- assign _tsunami_item = r.item -%}
+            {%- assign _tsunami_answer = r.answer_text | default: r.answer -%}
+            {%- assign _tsunami_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _tsunami_updated = r.map_updated_text | default: r.map_updated -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- capture _tsunami_section -%}
+        {%- if _tsunami_item != '' -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Tsunami Hazard Areas</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _tsunami_item }}</td>
+              <td>{{ _tsunami_answer }}</td>
+              <td>
+                {% if _tsunami_explain != '' %}
+                  {{ _tsunami_explain }}
+                {% else %}
+                  California Geological Survey tsunami mapping indicates whether the property lies within a potential tsunami inundation area.
+                {% endif %}
+              </td>
+              <td>{{ _tsunami_updated | default: 'California Geological Survey' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _tsunami_section = _tsunami_section | strip -%}
+      {%- assign _has_tsunami_section = _tsunami_section != '' -%}
+
+      {%- comment -%} Formerly Used Defense Sites matrix directly below Fire History {%- endcomment -%}
+      {%- assign _fuds_item = '' -%}
+      {%- assign _fuds_answer = '' -%}
+      {%- assign _fuds_explain = '' -%}
+      {%- assign _fuds_updated = '' -%}
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Formerly Used Defense Sites' -%}
+            {%- assign _fuds_item = r.item -%}
+            {%- assign _fuds_answer = r.answer_text | default: r.answer -%}
+            {%- assign _fuds_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _fuds_updated = r.map_updated_text | default: r.map_updated -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- assign _fuds_details = env_fuds -%}
+      {%- assign _fuds_summary = '' -%}
+      {%- assign _fuds_updated_from_details = '' -%}
+      {%- assign _fuds_property_sites = '' -%}
+      {%- assign _fuds_munitions_sites = '' -%}
+      {%- assign _fuds_property_sample = '' -%}
+      {%- assign _fuds_munitions_sample = '' -%}
+      {%- if _fuds_details -%}
+        {%- assign _fuds_summary = _fuds_details.summary_text | default: _fuds_details.summary | default: _fuds_details.rationale | default: '' -%}
+        {%- assign _fuds_updated_from_details = _fuds_details.map_updated_text | default: _fuds_details.map_updated | default: _fuds_details.data_updated | default: '' -%}
+        {%- assign _fuds_property_sites = _fuds_details.properties | default: _fuds_details.property_sites | default: _fuds_details.installations | default: '' -%}
+        {%- assign _fuds_munitions_sites = _fuds_details.munitions | default: _fuds_details.munitions_sites | default: _fuds_details.mrs | default: '' -%}
+        {%- assign _fuds_property_sample = _fuds_property_sites | first -%}
+        {%- assign _fuds_munitions_sample = _fuds_munitions_sites | first -%}
+      {%- endif -%}
+      {%- assign _fuds_has_property_details = false -%}
+      {%- if _fuds_property_sample and (_fuds_property_sample.name or _fuds_property_sample.installation_name or _fuds_property_sample.title or _fuds_property_sample.label) -%}
+        {%- assign _fuds_has_property_details = true -%}
+      {%- endif -%}
+      {%- assign _fuds_has_munitions_details = false -%}
+      {%- if _fuds_munitions_sample and (_fuds_munitions_sample.name or _fuds_munitions_sample.installation_name or _fuds_munitions_sample.title or _fuds_munitions_sample.label) -%}
+        {%- assign _fuds_has_munitions_details = true -%}
+      {%- endif -%}
+      {%- assign _fuds_has_details = false -%}
+      {%- if _fuds_has_property_details or _fuds_has_munitions_details -%}
+        {%- assign _fuds_has_details = true -%}
+      {%- endif -%}
+      {%- assign _fuds_updated_text = _fuds_updated | default: _fuds_updated_from_details | default: 'Not provided by USACE' -%}
+      {%- assign _fuds_disclaimer = 'Some FUDS data may only represent approximate locations.' -%}
+      {%- assign _fuds_explain_lower = _fuds_explain | downcase -%}
+      {%- capture _fuds_section -%}
+        {%- if _fuds_item != '' or _fuds_has_details or _fuds_summary != '' -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Formerly Used Defense Sites (USACE)</div>
+            <table class="env-matrix" style="margin-top:10px;">
+              <tr>
+                <th style="width:19%">Item</th>
+                <th style="width:16%">Answer</th>
+                <th style="width:49%">Explanation</th>
+                <th style="width:16%">Map Updated</th>
+              </tr>
+              {%- if _fuds_item != '' -%}
+                <tr>
+                  <td>{{ _fuds_item }}</td>
+                  <td>{{ _fuds_answer | default: 'Do not know' }}</td>
+                  <td>
+                    {%- if _fuds_explain != '' -%}
+                      {{ _fuds_explain }}
+                    {%- elsif _fuds_summary != '' -%}
+                      {{ _fuds_summary }}
+                    {%- else -%}
+                      No Formerly Used Defense Sites were identified within the search area.
+                    {%- endif -%}
+                    {%- unless _fuds_explain_lower contains 'approximate location' -%}
+                      <br />{{ _fuds_disclaimer }}
+                    {%- endunless -%}
+                  </td>
+                  <td>{{ _fuds_updated_text }}</td>
+                </tr>
+              {%- elsif _fuds_summary != '' -%}
+                <tr>
+                  <td>Formerly Used Defense Sites (USACE)</td>
+                  <td>{{ _fuds_answer | default: 'Do not know' }}</td>
+                  <td>
+                    {{ _fuds_summary }}
+                    <br />{{ _fuds_disclaimer }}
+                  </td>
+                  <td>{{ _fuds_updated_text }}</td>
+                </tr>
+              {%- endif -%}
+              {%- if _fuds_has_details -%}
+                {%- if _fuds_has_property_details -%}
+                  {%- for site in _fuds_property_sites -%}
+                    {%- assign _site_name = site.name | default: site.installation_name | default: site.title | default: site.label | default: '' -%}
+                    {%- assign _site_answer = site.answer_text | default: site.answer | default: site.status | default: '-' -%}
+                    {%- assign _site_explanation = site.explanation_text | default: site.rationale | default: site.description | default: '' -%}
+                    {%- assign _site_distance = site.distance_text | default: site.distance | default: site.distance_miles_text | default: '' -%}
+                    {%- assign _site_updated = site.map_updated_text | default: site.map_updated | default: _fuds_updated_text -%}
+                    {%- if _site_name != '' -%}
+                      <tr>
+                        <td>{{ _site_name }}</td>
+                        <td>{{ _site_answer }}</td>
+                        <td>
+                          {%- if _site_explanation != '' -%}
+                            {{ _site_explanation }}
+                          {%- elsif _site_distance != '' -%}
+                            Located {{ _site_distance }} from the subject property per USACE FUDS inventory.
+                          {%- else -%}
+                            Identified by the USACE Formerly Used Defense Sites program.
+                          {%- endif -%}
+                        </td>
+                        <td>{{ _site_updated }}</td>
+                      </tr>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+                {%- if _fuds_has_munitions_details -%}
+                  {%- for site in _fuds_munitions_sites -%}
+                    {%- assign _mrs_name = site.name | default: site.installation_name | default: site.title | default: site.label | default: '' -%}
+                    {%- assign _mrs_answer = site.answer_text | default: site.answer | default: site.status | default: '-' -%}
+                    {%- assign _mrs_explanation = site.explanation_text | default: site.rationale | default: site.description | default: '' -%}
+                    {%- assign _mrs_distance = site.distance_text | default: site.distance | default: site.distance_miles_text | default: '' -%}
+                    {%- assign _mrs_updated = site.map_updated_text | default: site.map_updated | default: _fuds_updated_text -%}
+                    {%- if _mrs_name != '' -%}
+                      <tr>
+                        <td>{{ _mrs_name }}</td>
+                        <td>{{ _mrs_answer }}</td>
+                        <td>
+                          {%- if _mrs_explanation != '' -%}
+                            {{ _mrs_explanation }}
+                          {%- elsif _mrs_distance != '' -%}
+                            Located {{ _mrs_distance }} from the subject property per USACE FUDS inventory.
+                          {%- else -%}
+                            Identified by the USACE Formerly Used Defense Sites program.
+                          {%- endif -%}
+                        </td>
+                        <td>{{ _mrs_updated }}</td>
+                      </tr>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              {%- endif -%}
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _fuds_section = _fuds_section | strip -%}
+      {%- assign _has_fuds_section = _fuds_section != '' -%}
+
+      {%- comment -%} Superfund matrix directly below Fire History {%- endcomment -%}
+      {%- assign _superfund_item    = '' -%}
+      {%- assign _superfund_answer  = '' -%}
+      {%- assign _superfund_explain = '' -%}
+      {%- assign _superfund_updated = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Superfund' -%}
+            {%- assign _superfund_item    = r.item -%}
+            {%- assign _superfund_answer  = r.answer_text | default: r.answer -%}
+            {%- assign _superfund_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _superfund_updated = r.map_updated_text | default: r.map_updated -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- capture _superfund_section -%}
+        {%- if _superfund_item != '' -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Superfund (SEMS) Nearby</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _superfund_item }}</td>
+              <td>{{ _superfund_answer }}</td>
+              <td>
+                {% if _superfund_explain != '' %}
+                  {{ _superfund_explain }}
+                {% else %}
+                  No additional site details provided by EPA FRS.
+                {% endif %}
+              </td>
+              <td>{{ _superfund_updated | default: 'Not provided by EPA FRS' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _superfund_section = _superfund_section | strip -%}
+      {%- assign _has_superfund_section = _superfund_section != '' -%}
+
+      {%- comment -%} WellSTAR oil & gas wells matrix data for continued page {%- endcomment -%}
+      {%- assign _oil_gas_item = '' -%}
+      {%- assign _oil_gas_answer = '' -%}
+      {%- assign _oil_gas_explain = '' -%}
+      {%- assign _oil_gas_updated = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Oil & Gas' -%}
+            {%- assign _oil_gas_item = r.item -%}
+            {%- assign _oil_gas_answer = r.answer_text | default: r.answer -%}
+            {%- assign _oil_gas_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _oil_gas_updated = r.map_updated_text | default: r.map_updated | default: oil_gas_source_updated -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- comment -%} Groundwater Quality - Aquifer Risk matrix data following WellSTAR {%- endcomment -%}
+      {%- assign _aquifer_item = '' -%}
+      {%- assign _aquifer_answer = '' -%}
+      {%- assign _aquifer_explain = '' -%}
+      {%- assign _aquifer_updated = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Aquifer Risk' -%}
+            {%- assign _aquifer_item = r.item -%}
+            {%- assign _aquifer_answer = r.answer_text | default: r.answer -%}
+            {%- assign _aquifer_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _aquifer_updated = r.map_updated_text | default: r.map_updated | default: aquifer_source_updated -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- comment -%} Mold Advisory matrix data directly after WellSTAR {%- endcomment -%}
+      {%- assign _mold_item = '' -%}
+      {%- assign _mold_answer = '' -%}
+      {%- assign _mold_explain = '' -%}
+      {%- assign _mold_updated = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Mold Advisory' -%}
+            {%- assign _mold_item = r.item -%}
+            {%- assign _mold_answer = r.answer_text | default: r.answer -%}
+            {%- assign _mold_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _mold_updated = r.map_updated_text | default: r.map_updated | default: 'N/A' -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- comment -%} Right-to-Farm matrix directly below WellSTAR {%- endcomment -%}
+      {%- assign _right_to_farm_item = '' -%}
+      {%- assign _right_to_farm_answer = '' -%}
+      {%- assign _right_to_farm_explain = '' -%}
+      {%- assign _right_to_farm_updated = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Right-to-Farm' -%}
+            {%- assign _right_to_farm_item = r.item -%}
+            {%- assign _right_to_farm_answer = r.answer_text | default: r.answer -%}
+            {%- assign _right_to_farm_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _right_to_farm_updated = r.map_updated_text | default: r.map_updated | default: right_to_farm_source_updated -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+
+      {%- comment -%} Lead-based Paint Advisory matrix directly following Right-to-Farm {%- endcomment -%}
+      {%- assign _lead_paint_item = '' -%}
+      {%- assign _lead_paint_answer = '' -%}
+      {%- assign _lead_paint_explain = '' -%}
+      {%- assign _lead_paint_updated = '' -%}
+
+      {%- if env_smart_verify_rows and env_smart_verify_rows.size > 0 -%}
+        {%- for r in env_smart_verify_rows -%}
+          {%- assign _it = r.item | default: '' -%}
+          {%- if _it contains 'Lead-based Paint Advisory' -%}
+            {%- assign _lead_paint_item = r.item -%}
+            {%- assign _lead_paint_answer = r.answer_text | default: r.answer -%}
+            {%- assign _lead_paint_explain = r.explanation_text | default: r.rationale_text -%}
+            {%- assign _lead_paint_updated = r.map_updated_text | default: r.map_updated | default: 'N/A' -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- assign _has_oil_gas_section = _oil_gas_item != '' -%}
+      {%- assign _has_aquifer_section = _aquifer_item != '' -%}
+      {%- assign _has_mold_section = _mold_item != '' -%}
+      {%- assign _has_right_to_farm_section = _right_to_farm_item != '' -%}
+      {%- assign _has_lead_paint_section = _lead_paint_item != '' -%}
+
+      {%- capture _oil_gas_section -%}
+        {%- if _has_oil_gas_section -%}
+          <div class="env-matrix-block">
+            <div class="section-title">WellSTAR: Oil and Gas Wells</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _oil_gas_item }}</td>
+              <td>{{ _oil_gas_answer }}</td>
+              <td>
+                {% if _oil_gas_explain != '' %}
+                  {{ _oil_gas_explain }}
+                {% else %}
+                  Proximity to active or idle oil and gas wells is summarized using the CalGEM WellSTAR dataset.
+                {% endif %}
+              </td>
+              <td>{{ _oil_gas_updated | default: 'WellSTAR' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _oil_gas_section = _oil_gas_section | strip -%}
+
+      {%- capture _aquifer_section -%}
+        {%- if _has_aquifer_section -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Groundwater Quality - Aquifer Risk</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _aquifer_item }}</td>
+              <td>{{ _aquifer_answer }}</td>
+              <td>
+                {% if _aquifer_explain != '' %}
+                  {{ _aquifer_explain }}
+                {% else %}
+                  Modeled groundwater quality risk reflects California's 2023 aquifer assessment, highlighting domestic wells, small systems, and disadvantaged areas where modeled contamination exceeds the 0.5% threshold.
+                {% endif %}
+              </td>
+              <td>{{ _aquifer_updated | default: aquifer_source_updated | default: 'California 2023 Aquifer Risk' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _aquifer_section = _aquifer_section | strip -%}
+
+      {%- capture _mold_section -%}
+        {%- if _has_mold_section -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Mold Advisory</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _mold_item }}</td>
+              <td>{{ _mold_answer }}</td>
+              <td>
+                {% if _mold_explain != '' %}
+                  {{ _mold_explain }}
+                {% else %}
+                  Indoor mold thrives in persistent moisture; identify and repair leaks quickly, dry wet materials within 24 to 48 hours, and engage qualified mold professionals if significant growth is observed.
+                {% endif %}
+              </td>
+              <td>{{ _mold_updated | default: 'N/A' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _mold_section = _mold_section | strip -%}
+
+      {%- capture _megan_section -%}
+        <div class="env-matrix-block">
+          <div class="section-title">Megan&rsquo;s Law Advisory</div>
+
+          <table class="env-matrix" style="margin-top:10px;">
+          <tr>
+            <th style="width:19%">Item</th>
+            <th style="width:16%">Answer</th>
+            <th style="width:49%">Explanation</th>
+            <th style="width:16%">Map Updated</th>
+          </tr>
+          <tr>
+            <td>Megan&rsquo;s Law: Registered Sex Offender Disclosure</td>
+            <td>California DOJ Megan&rsquo;s Law Notice</td>
+            <td>Pursuant to Penal Code Section 290.46, information about specified registered sex offenders is available to the public on the California Department of Justice Megan&rsquo;s Law website at www.meganslaw.ca.gov.</td>
+            <td>California Department of Justice</td>
+          </tr>
+          </table>
+        </div>
+      {%- endcapture -%}
+      {%- assign _megan_section = _megan_section | strip -%}
+
+      {%- capture _right_to_farm_section -%}
+        {%- if _has_right_to_farm_section -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Right-to-Farm Disclosure</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _right_to_farm_item }}</td>
+              <td>{{ _right_to_farm_answer }}</td>
+              <td>
+                {% if _right_to_farm_explain != '' %}
+                  {{ _right_to_farm_explain }}
+                {% else %}
+                  Important Farmland within one mile is summarized using California's Farmland Mapping and Monitoring Program (FMMP) to provide Right-to-Farm Act notice.
+                {% endif %}
+              </td>
+              <td>{{ _right_to_farm_updated | default: 'California DOC FMMP' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _right_to_farm_section = _right_to_farm_section | strip -%}
+
+      {%- capture _lead_paint_section -%}
+        {%- if _has_lead_paint_section -%}
+          <div class="env-matrix-block">
+            <div class="section-title">Lead-based Paint Advisory</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>{{ _lead_paint_item }}</td>
+              <td>{{ _lead_paint_answer }}</td>
+              <td>
+                {% if _lead_paint_explain != '' %}
+                  {{ _lead_paint_explain }}
+                {% else %}
+                  Residential lead-based paint advisories summarize federal requirements (24 CFR Part 35) for properties built before 1978.
+                {% endif %}
+              </td>
+              <td>{{ _lead_paint_updated | default: 'N/A' }}</td>
+            </tr>
+            </table>
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _lead_paint_section = _lead_paint_section | strip -%}
+
+      {%- capture _retrofit_section -%}
+        {%- assign _retrofit_source = env_low_cost_retrofit | default: env_low_cost_retrofit_list | default: low_cost_retrofit | default: low_cost_retrofit_list | default: env.low_cost_retrofit | default: '' -%}
+        {%- if _retrofit_source == '' and env_low_cost_retrofit_items -%}
+          {%- assign _retrofit_source = env_low_cost_retrofit_items -%}
+        {%- endif -%}
+        {%- assign _retrofit_entries = '' -%}
+        {%- assign _retrofit_intro = '' -%}
+        {%- if _retrofit_source -%}
+          {%- assign _retrofit_intro = _retrofit_source.intro | default: _retrofit_source.description | default: _retrofit_source.text | default: '' -%}
+          {%- if _retrofit_source.items -%}
+            {%- assign _retrofit_entries = _retrofit_source.items -%}
+          {%- elsif _retrofit_source.list -%}
+            {%- assign _retrofit_entries = _retrofit_source.list -%}
+          {%- elsif _retrofit_source.recommendations -%}
+            {%- assign _retrofit_entries = _retrofit_source.recommendations -%}
+          {%- else -%}
+            {%- assign _retrofit_entries = _retrofit_source -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if _retrofit_entries == '' and env_low_cost_retrofit_items -%}
+          {%- assign _retrofit_entries = env_low_cost_retrofit_items -%}
+        {%- endif -%}
+        {%- assign _retrofit_entries = _retrofit_entries | strip -%}
+        {%- assign _retrofit_has_content = false -%}
+        {%- if _retrofit_entries -%}
+          {%- if _retrofit_entries == '' -%}
+            {%- assign _retrofit_has_content = false -%}
+          {%- elsif _retrofit_entries.size and _retrofit_entries.size == 0 -%}
+            {%- assign _retrofit_has_content = false -%}
+          {%- else -%}
+            {%- assign _retrofit_has_content = true -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if _retrofit_has_content -%}
+          <div class="env-matrix-block env-low-cost">
+            <div class="section-title">Low-Cost Retrofit List</div>
+            {%- if _retrofit_intro != '' -%}
+              <p>{{ _retrofit_intro }}</p>
+            {%- endif -%}
+            {%- assign _entries = _retrofit_entries -%}
+            {%- if _entries.size and _entries.first != nil -%}
+              <ul class="env-retrofit-list">
+                {% for item in _entries %}
+                  {% assign _label = item.label | default: item.name | default: item.title | default: item.item | default: '' %}
+                  {% assign _details = item.details | default: item.description | default: item.text | default: '' %}
+                  <li>
+                    {% if _label != '' %}<strong>{{ _label }}</strong>{% if _details != '' %}: {% endif %}{% endif %}
+                    {% if _details != '' %}{{ _details }}{% else %}{% if _label == '' %}{{ item }}{% endif %}{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {%- else -%}
+              <p>{{ _entries }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign _retrofit_section = _retrofit_section | strip -%}
+    </div>
+    {%- assign _env_section_pages = env_section_pages | default: '' -%}
+    {% if _env_section_pages != '' %}
+      {% for page in _env_section_pages %}
+        <div class="page env-page{% unless forloop.first %} env-page-continued{% endunless %}">
+          <div class="env-page-header">
+            <h1>ENVIRONMENTAL RISK ADDENDUM STANDARD{% unless forloop.first %} CONTINUED{% endunless %}</h1>
+          </div>
+          <div class="env-section-group">
+            {% assign _page_keys = page %}
+            {% assign _rendered_keys = '' %}
+            {% assign _is_first_section = true %}
+            {% for key in _page_keys %}
+              {% assign _key_token = '__' | append: key | append: '__' %}
+              {% unless _rendered_keys contains _key_token %}
+                {% assign _section_html = '' %}
+                {% case key %}
+                  {% when 'FireHistory' %}{% assign _section_html = _fire_history_section %}
+                  {% when 'Radon' %}{% assign _section_html = _radon_section %}
+                  {% when 'NOA' %}{% assign _section_html = _noa_section %}
+                  {% when 'Tsunami' %}{% assign _section_html = _tsunami_section %}
+                  {% when 'FUDS' %}{% assign _section_html = _fuds_section %}
+                  {% when 'Superfund' %}{% assign _section_html = _superfund_section %}
+                  {% when 'OilGas' %}{% assign _section_html = _oil_gas_section %}
+                  {% when 'Aquifer' %}{% assign _section_html = _aquifer_section %}
+                {% when 'Mold' %}{% assign _section_html = _mold_section %}
+                {% when 'Megan' %}{% assign _section_html = _megan_section %}
+                {% when 'RightToFarm' %}{% assign _section_html = _right_to_farm_section %}
+                {% when 'LeadPaint' %}{% assign _section_html = _lead_paint_section %}
+                {% when 'LowCostRetrofit' %}
+                  {% if env_low_cost_retrofit_html %}
+                    {% assign _section_html = '<div class="env-matrix-block env-matrix-block-first env-low-cost">' | append: env_low_cost_retrofit_html | append: '</div>' %}
+                  {% else %}
+                    {% assign _section_html = _retrofit_section %}
+                  {% endif %}
+              {% endcase %}
+                {% assign _section_html = _section_html | strip %}
+                {% if _section_html != '' %}
+                  {% assign _adjusted_section = _section_html %}
+                  {% if _is_first_section %}
+                    {% unless _adjusted_section contains 'env-matrix-block env-matrix-block-first' %}
+                      {% assign _adjusted_section = _adjusted_section | replace_first: 'env-matrix-block', 'env-matrix-block env-matrix-block-first' %}
+                    {% endunless %}
+                  {% else %}
+                    {% if _adjusted_section contains 'env-matrix-block env-matrix-block-first' %}
+                      {% assign _adjusted_section = _adjusted_section | replace_first: 'env-matrix-block env-matrix-block-first', 'env-matrix-block' %}
+                    {% endif %}
+                  {% endif %}
+                  {{ _adjusted_section }}
+                  {% assign _is_first_section = false %}
+                {% endif %}
+                {% assign _rendered_keys = _rendered_keys | append: _key_token %}
+
+                {% if key == 'OilGas' %}
+                  {% if _page_keys contains 'Megan' and _megan_section != '' %}
+                    {% assign _extra_key = '__Megan__' %}
+                    {% unless _rendered_keys contains _extra_key %}
+                      {% assign _adjusted_section = _megan_section | strip %}
+                      {% if _adjusted_section != '' %}
+                        {% if _is_first_section %}
+                          {% unless _adjusted_section contains 'env-matrix-block env-matrix-block-first' %}
+                            {% assign _adjusted_section = _adjusted_section | replace_first: 'env-matrix-block', 'env-matrix-block env-matrix-block-first' %}
+                          {% endunless %}
+                        {% else %}
+                          {% if _adjusted_section contains 'env-matrix-block env-matrix-block-first' %}
+                            {% assign _adjusted_section = _adjusted_section | replace_first: 'env-matrix-block env-matrix-block-first', 'env-matrix-block' %}
+                          {% endif %}
+                        {% endif %}
+                        {{ _adjusted_section }}
+                        {% assign _is_first_section = false %}
+                      {% endif %}
+                      {% assign _rendered_keys = _rendered_keys | append: _extra_key %}
+                    {% endunless %}
+                  {% endif %}
+                  {% if _page_keys contains 'RightToFarm' and _right_to_farm_section != '' %}
+                    {% assign _extra_key = '__RightToFarm__' %}
+                    {% unless _rendered_keys contains _extra_key %}
+                      {% assign _adjusted_section = _right_to_farm_section | strip %}
+                      {% if _adjusted_section != '' %}
+                        {% if _is_first_section %}
+                          {% unless _adjusted_section contains 'env-matrix-block env-matrix-block-first' %}
+                            {% assign _adjusted_section = _adjusted_section | replace_first: 'env-matrix-block', 'env-matrix-block env-matrix-block-first' %}
+                          {% endunless %}
+                        {% else %}
+                          {% if _adjusted_section contains 'env-matrix-block env-matrix-block-first' %}
+                            {% assign _adjusted_section = _adjusted_section | replace_first: 'env-matrix-block env-matrix-block-first', 'env-matrix-block' %}
+                          {% endif %}
+                        {% endif %}
+                        {{ _adjusted_section }}
+                        {% assign _is_first_section = false %}
+                      {% endif %}
+                      {% assign _rendered_keys = _rendered_keys | append: _extra_key %}
+                    {% endunless %}
+                  {% endif %}
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="page env-page">
+        <div class="env-page-header">
+          <h1>ENVIRONMENTAL RISK ADDENDUM STANDARD</h1>
+        </div>
+        <div class="env-section-group">
+          {{ _fire_history_section }}
+          {% if _has_radon_section %}{{ _radon_section }}{% endif %}
+          {% if _has_noa_section %}{{ _noa_section }}{% endif %}
+          {% if _tsunami_section != '' %}{{ _tsunami_section }}{% endif %}
+          {% if _fuds_section != '' %}{{ _fuds_section }}{% endif %}
+          {% if _superfund_section != '' %}{{ _superfund_section }}{% endif %}
+          {% if _oil_gas_section != '' %}{{ _oil_gas_section }}{% endif %}
+          {% if _aquifer_section != '' %}{{ _aquifer_section }}{% endif %}
+          {% if _mold_section != '' %}{{ _mold_section }}{% endif %}
+          {% if _megan_section != '' %}{{ _megan_section }}{% endif %}
+          {% if _right_to_farm_section != '' %}{{ _right_to_farm_section }}{% endif %}
+          {% if _lead_paint_section != '' %}{{ _lead_paint_section }}{% endif %}
+          {% if _retrofit_section != '' %}{{ _retrofit_section }}{% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+  {%- comment -%} ====================== SOURCES ====================== {%- endcomment -%}
+  <div class="sources-page">
+    <h1>Sources</h1>
+    <p>This report was generated using authoritative data from federal, state, and local agencies:</p>
+
+    <ul>
+      <li>FEMA NFHL</li>
+      <li>Cal OES Dam Inundation</li>
+      <li>CGS - Alquist-Priolo Fault Zones</li>
+      <li>CGS - Seismic Hazard Zones (Landslide)</li>
+      <li>CGS - Seismic Hazard Zones (Liquefaction)</li>
+      <li>CAL FIRE - Very High Fire Hazard Severity Zones (LRA)</li>
+      <li>CAL FIRE - State Responsibility Areas (SRA)</li>
+      <li>CA Statewide Parcels Public</li>
+      <li>Environmental Risk Addendum - NIFC WFIGS - Interagency Fire Perimeters</li>
+      <li>Environmental Risk Addendum - CAL FIRE FRAP - Historical Fire Perimeters</li>
+      <li>Environmental Risk Addendum - Tsunami Hazard Areas</li>
+      <li>Environmental Risk Addendum - Formerly Used Defense Sites (USACE)</li>
+      <li>Environmental Risk Addendum - CalGEM WellSTAR Oil &amp; Gas Wells (Layer WellSTAR Wells)</li>
+      <li>Environmental Risk Addendum - Groundwater Quality - California 2023 Aquifer Risk Assessment</li>
+      <li>Environmental Risk Addendum - Mold Advisory - California Department of Public Health Mold Guidance</li>
+      <li>Environmental Risk Addendum - Megan&rsquo;s Law Advisory - California DOJ Megan&rsquo;s Law Website</li>
+      <li>Environmental Risk Addendum - California Geological Survey (CGS) NOA Resources (Layer USGS Asbestos Occurrences)</li>
+      <li>Environmental Risk Addendum - California Important Farmland (FMMP) (Layer Important Farmland 2022)</li>
+      <li>Environmental Risk Addendum - Right-to-Farm Disclosure - The Farmland Mapping and Monitoring Program</li>
+    </ul>
+  </div>
+
+  {%- comment -%} ====================== NATURAL HAZARD DISCLOSURE REPORT TERMS & CONDITIONS ====================== {%- endcomment -%}
+
+
+
+
+
+
+<div class="page terms">
+
+  <h1 class="section-title" style="text-align:center;">NATURAL HAZARD DISCLOSURE REPORT TERMS &amp; CONDITIONS</h1>
+
+
+
+  <p>
+
+    This SafeCanopyAI Natural Hazard Disclosure Report (&ldquo;Report&rdquo;) is subject to each of the following Terms and Conditions:
+
+  </p>
+
+
+
+  <div class="terms-list">
+
+    <p class="terms-heading">1. Definitions &amp; Interpretation</p>
+
+    <p class="terms-sub">1.1 &ldquo;Report&rdquo; means the Natural Hazard Disclosure Report (and, if applicable, related tax, environmental, or supplemental disclosures) prepared by Provider for the subject Property.</p>
+
+    <p class="terms-sub">1.2 &ldquo;Recipient(s)&rdquo; means Seller(s), Buyer(s), and their designated agents in the transaction for which the Report is ordered.</p>
+
+    <p class="terms-sub">1.3 &ldquo;Property&rdquo; means the real property described in the Report, as identified by address, APN, and legal description.</p>
+
+    <p class="terms-sub">1.4 &ldquo;Data Sources&rdquo; means public agency maps, governmental databases, and third-party vendor datasets used in preparing the Report.</p>
+
+    <p class="terms-sub">1.5 &ldquo;Hazard Zones&rdquo; means the six (6) statutorily required natural hazard areas (flood, dam inundation, fire severity, wildland fire, fault, seismic hazards) plus any additional advisory areas included in the Report.</p>
+
+    <p class="terms-sub">1.6 &ldquo;Effective Date&rdquo; means the date on which the Report is delivered to the Recipient(s).</p>
+
+
+
+    <p class="terms-heading">2. Scope &amp; Purpose</p>
+
+    <p class="terms-sub">2.1 The Report is intended to assist Seller(s) and Buyer(s) (and their agents) in complying with California&rsquo;s Natural Hazard Disclosure law (Cal. Civil Code &sect;1103 et seq.) by identifying whether the Property lies within certain mapped hazard zones and providing supplemental disclosures.</p>
+
+    <p class="terms-sub">2.2 The Report is strictly based on mapped public records and database information; no on-site inspection, visual survey, geotechnical testing, or soil/structural analysis is performed.</p>
+
+    <p class="terms-sub">2.3 The Report does not constitute a title report, survey, engineering opinion, insurance policy, guarantee, or warranty of any kind (express or implied).</p>
+
+    <p class="terms-sub">2.4 The Report does not opine whether the Property can be developed, improved, or is free of restrictions, liens, or other encumbrances.</p>
+
+
+
+    <p class="terms-heading">3. Reliance, Use &amp; Restriction</p>
+
+    <p class="terms-sub">3.1 The Report is for the exclusive use of the Recipient(s) in the single escrow/transaction for which it is ordered.</p>
+
+    <p class="terms-sub">3.2 No third parties (other than Seller(s), Buyer(s), and their licensees) may rely on it or use it for any purpose, unless expressly consented in writing by Provider.</p>
+
+    <p class="terms-sub">3.3 The Report may not be assigned, copied, or used in subsequent transactions without Provider&rsquo;s prior written consent.</p>
+
+
+
+    <p class="terms-heading">4. Data Accuracy, Limitations &amp; Updates</p>
+
+    <p class="terms-sub">4.1 Provider relies on Data Sources, and does not independently verify their accuracy or completeness.</p>
+
+    <p class="terms-sub">4.2 Changes in public maps or hazard designations after the Effective Date are not reflected; Provider has no duty to update the Report.</p>
+
+    <p class="terms-sub">4.3 Some hazards or environmental conditions may exist which are not captured in the databases.</p>
+
+    <p class="terms-sub">4.4 In cases where the APN or address is incorrect or ambiguous, the Report&rsquo;s findings are contingent on the accuracy of input data.</p>
+
+  </div>
+
+</div>
+
+
+
+<div class="page terms terms-continued">
+
+  <h1 class="section-title" style="text-align:center;">TERMS &amp; CONDITIONS (CONTINUED)</h1>
+
+
+
+  <div class="terms-list">
+
+    <p class="terms-heading">5. Additional Disclosures &amp; Local/Advisory Information</p>
+
+    <p class="terms-sub">5.1 The Report may include additional disclosure layers or advisory information (e.g. airport noise influence, military ordnance, radon potential, local safety element overlays, Mello-Roos/1915 bond data, energy/efficiency notices, lead/mold, etc.).</p>
+
+    <p class="terms-sub">5.2 Such additional disclosures are provided &ldquo;as is&rdquo; from public or vendor sources and are subject to the same limitations.</p>
+
+    <p class="terms-sub">5.3 Local jurisdictions may have more restrictive or recent hazard or zoning data; Recipients should verify with local agencies.</p>
+
+
+
+    <p class="terms-heading">6. Disclaimer of Warranties</p>
+
+    <p class="terms-sub">Except as explicitly stated otherwise, Provider disclaims all warranties, express or implied, including warranties of accuracy, timeliness, completeness, merchantability, or fitness for a particular purpose.</p>
+
+
+
+    <p class="terms-heading">7. Indemnity &amp; Defense</p>
+
+    <p class="terms-sub">7.1 Provider shall defend, indemnify, and hold harmless Recipient(s), and the Seller(s)&rsquo;s real estate agents or brokers, from and against claims, liabilities, losses, and expenses (including attorneys&rsquo; fees) arising from Provider&rsquo;s gross negligence, willful misconduct, or material breach of these Terms, subject to the liability cap below.</p>
+
+    <p class="terms-sub">7.2 Recipient(s) shall promptly notify Provider in writing of any claim, and Provider shall have sole control of the defense (including choice of counsel).</p>
+
+
+
+    <p class="terms-heading">8. Limitation of Liability</p>
+
+    <p class="terms-sub">8.1 To the fullest extent permitted by California law, Provider&rsquo;s aggregate liability to all Recipient(s) for any claims arising from or relating to the Report shall not exceed the lesser of:</p>
+
+    <p class="terms-sub indent">(a) the difference in fair market value of the Property as of the Report date caused by a proven error in the Report; or</p>
+
+    <p class="terms-sub indent">(b) the limits under Provider&rsquo;s Errors &amp; Omissions insurance at the time of claim resolution.</p>
+
+    <p class="terms-sub">8.2 Provider shall not be liable for punitive, special, incidental, or consequential damages.</p>
+
+    <p class="terms-sub">8.3 This limitation applies even if any limited remedy does not satisfy its essential purpose.</p>
+
+
+
+    <p class="terms-heading">9. Termination / Cancellation</p>
+
+    <p class="terms-sub">9.1 If escrow is canceled before the Report is released, Recipient(s) may cancel the order and receive a refund (subject to incurred costs).</p>
+
+    <p class="terms-sub">9.2 Once the Report is released, the order is non-refundable. Notwithstanding, if the transaction fails to occur, Provider will waive the fee upon notification of cancellation.</p>
+
+  </div>
+
+</div>
+
+
+
+<div class="page terms terms-continued">
+
+  <h1 class="section-title" style="text-align:center;">TERMS &amp; CONDITIONS (CONTINUED)</h1>
+
+
+
+  <div class="terms-list">
+
+    <p class="terms-heading">10. Confidentiality</p>
+
+    <p class="terms-sub">10.1 The Report and supporting data are confidential and may not be shared beyond permitted Recipient(s).</p>
+
+    <p class="terms-sub">10.2 Recipient(s) must not reproduce or extract underlying raw data except as necessary for transaction use.</p>
+
+
+
+    <p class="terms-heading">11. Dispute Resolution / Arbitration</p>
+
+    <p class="terms-sub">11.1 Disputes shall be resolved by binding arbitration under the rules of an agreed provider, in the county where the Property is located.</p>
+
+    <p class="terms-sub">11.2 Arbitrator shall apply California law and may award any remedy available in court.</p>
+
+    <p class="terms-sub">11.3 The prevailing party is entitled to recover reasonable attorneys&rsquo; fees and costs.</p>
+
+
+
+    <p class="terms-heading">12. Governing Law &amp; Venue</p>
+
+    <p class="terms-sub">These Terms are governed by California law. Venue is proper in the county where the Property is located.</p>
+
+
+
+    <p class="terms-heading">13. Severability &amp; Survival</p>
+
+    <p class="terms-sub">If any provision is invalid, the remainder remains in effect. Provisions concerning disclaimer, limitation of liability, indemnity, confidentiality, dispute resolution, and survival remain enforceable after termination.</p>
+
+
+
+    <p class="terms-heading">14. Entire Agreement / Amendment</p>
+
+    <p class="terms-sub">These Terms, along with the Report, constitute the entire agreement. No amendment or waiver is effective unless in writing and signed by both Provider and the affected Recipient(s).</p>
+
+
+
+    <p class="terms-heading">15. Notices</p>
+
+    <p class="terms-sub">All notices must be in writing and delivered to the addresses specified in the Report ordering documents.</p>
+
+  </div>
+
+</div>
+
+  <div class="page disclaimer-page" style="font-size:13px;">
+    <h1 class="section-title" style="text-align:center;">DISCLAIMER OF LIABILITY</h1>
+
+    <p>
+      This Natural Hazard Disclosure Report ("Report") is prepared solely for informational purposes based on data obtained from public records and third-party sources believed to be reliable. SafeCanopyAI (the "Provider") does not independently verify such data and makes no representation or warranty, express or implied, regarding its accuracy, timeliness, or completeness.
+    </p>
+
+    <p>
+      Responsibility for disclosures remain with the seller and the seller's agents under California Civil Code §1103.2. This report is a tool to assist in compliance, but it does not displace the statutory duty. This report is based solely on public maps and records. No site inspection has been conducted. No warranties are provided regarding accuracy or fitness for a particular purpose. The liability of Provider, its officers, employees, and affiliates, for any claim, damage, or loss arising out of or related to this report, whether in contract, tort, or otherwise, shall in no event exceed the lesser of lesser of: (a) the diminution in the property's fair market value as of the report date caused by a proven error, or (b) the applicable limits under the Provider's professional liability or errors and omissions insurance.
+    </p>
+  </div>
+  {%- comment -%} ====================== CONTACT ====================== {%- endcomment -%}
+  <div class="contact-page" style="text-align: center;">
+    <img class="logo"
+         src="{{ contact_logo_url | default: cover_image_url | default: 'https://static.wixstatic.com/media/39685c_b04a1f9211434ec0b2efe6773e138d94~mv2.png' }}"
+         alt="{{ brand_name | default: 'SafeCanopyAI' }}"
+         style="height: 100px; display: block; margin: 0 auto;" />
+    <h1>Contact Us</h1>
+    <p>If you have questions or need additional information, please reach out to:</p>
+    <ul style="list-style: none; padding: 0;">
+      <li>Email: <strong>info@safecanopy.ai</strong></li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Generated by {{ brand_name | default: 'SafeCanopyAI' }}
+  </div>
+
+  {%- comment -%}
+  ====================== INVOICE (ALWAYS LAST PAGE) ======================
+  {%- endcomment -%}
+
+  <style>
+    .invoice-page {
+      page-break-before: always;   /* legacy */
+      break-before: page;          /* modern */
+      font-family: Arial, Helvetica, sans-serif;
+      color: #000;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 30px;
+    }
+    .inv-topbar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .inv-title { font-size: 22px; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+    .inv-meta { text-align: right; font-size: 12px; }
+    .inv-meta div { margin: 2px 0; }
+    .inv-issuer { margin: 8px 0 18px 0; font-size: 12px; }
+    .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 16px; }
+    .inv-card { border: 1px solid #000; padding: 10px; }
+    .inv-card h3 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; }
+    .inv-muted { color: #555; font-size: 12px; }
+    .inv-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .inv-table th, .inv-table td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
+    .inv-table th { background: #f7f7f7; }
+    .inv-right { text-align: right; }
+    .inv-totalbox { width: 50%; margin-left: auto; margin-top: 10px; border: 1px solid #000; padding: 0; }
+    .inv-totalbox table { width: 100%; border-collapse: collapse; }
+    .inv-totalbox td { border-bottom: 1px solid #000; padding: 8px; }
+    .inv-totalbox tr:last-child td { border-bottom: none; font-weight: bold; }
+    .inv-notes { margin-top: 14px; font-size: 12px; }
+  </style>
+
+  {%- assign pkg_raw = package | default: package_type | default: packageTier | default: '' | downcase -%}
+  {%- assign pkg = pkg_raw -%}
+  {%- if pkg == '' -%}
+    {%- if show_env_section -%}
+      {%- assign pkg = 'standard' -%}
+    {%- else -%}
+      {%- assign pkg = 'basic' -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- assign qty = invoice_qty | default: quantity | default: 1 -%}
+  {%- assign default_unit = 75 | plus: 0 -%}
+  {%- if pkg == 'standard' -%}
+    {%- assign default_unit = 85 -%}
+  {%- elsif pkg == 'advanced' -%}
+    {%- assign default_unit = 120 -%}
+  {%- endif -%}
+  {%- assign unit = invoice_unit_price | default: unit_price | default: amount_usd | default: default_unit -%}
+  {%- assign fee  = invoice_processing_fee_amount | default: processing_fee_usd | default: 0 -%}
+  {%- assign disc = invoice_discount_amount | default: discount_usd | default: 0 -%}
+
+  {%- assign explicit_subtotal = invoice_subtotal | default: invoice_subtotal_amount -%}
+  {%- if explicit_subtotal == blank -%}
+    {%- assign explicit_subtotal = subtotal_usd | default: unit | times: qty -%}
+    {%- assign explicit_subtotal = explicit_subtotal | minus: disc | plus: fee -%}
+  {%- endif -%}
+  {%- assign _subtotal = explicit_subtotal -%}
+
+  {%- assign tax_rate = invoice_tax_rate | default: sales_tax_rate | default: 0 -%}
+  {%- assign explicit_tax = invoice_tax_amount | default: invoice_tax | default: sales_tax_amount -%}
+  {%- if explicit_tax == blank -%}
+    {%- assign explicit_tax = _subtotal | times: tax_rate | divided_by: 100 -%}
+  {%- endif -%}
+  {%- assign _tax = explicit_tax | default: 0 -%}
+
+  {%- assign explicit_total = invoice_total_due | default: invoice_total_amount | default: total_due_usd -%}
+  {%- if explicit_total == blank -%}
+    {%- assign explicit_total = _subtotal | plus: _tax -%}
+  {%- endif -%}
+  {%- assign _total = explicit_total -%}
+
+  <div class="invoice-page">
+    <div class="inv-topbar">
+      <div>
+        <h2 class="inv-title">Invoice</h2>
+        <div class="inv-issuer">
+          <strong>{{ brand_name | default: 'SafeCanopyAI' }}</strong><br/>
+          {{ brand_phone | default: 'Tel: 415-562-5341' }}<br/>
+          {{ brand_email | default: 'Email: info@safecanopy.ai' }}{% if brand_phone %} &mdash; {{ brand_phone }}{% endif %}
+        </div>
+      </div>
+      <div class="inv-meta">
+        <div><strong>Invoice #:</strong> {{ invoice_number | default: report_id | default: 'N/A' }}</div>
+        <div><strong>Invoice Date:</strong> {{ invoice_date | default: report_date | default: '' }}</div>
+      </div>
+    </div>
+
+    <div class="inv-grid">
+      <div class="inv-card">
+        <h3>Bill To (Escrow / Ordering Party)</h3>
+        {% if escrow_company %}
+          <div><strong>{{ escrow_company }}</strong></div>
+          {% if escrow_officer_name %}<div>Attn: {{ escrow_officer_name }}</div>{% endif %}
+          {% if escrow_officer_email %}<div class="inv-muted">{{ escrow_officer_email }}</div>{% endif %}
+          {% if escrow_file_number %}<div>File #: {{ escrow_file_number }}</div>{% endif %}
+        {% else %}
+          <div><strong>{{ orderer_company | default: orderer_name | default: 'Ordering Party' }}</strong></div>
+          {% if orderer_name %}<div>Contact: {{ orderer_name }}</div>{% endif %}
+          {% if orderer_email %}<div class="inv-muted">{{ orderer_email }}</div>{% endif %}
+        {% endif %}
+      </div>
+
+      <div class="inv-card">
+        <h3>Property</h3>
+        {% if is_apn_mode %}
+          <div><strong>APN:</strong> {{ apn | default: 'N/A' }}</div>
+        {% else %}
+          <div><strong>Address:</strong> {{ address | default: 'N/A' }}</div>
+          {% assign property_line = invoice_property_line | default: '' | strip %}
+          {% assign property_state = invoice_property_state | default: state | default: '' | strip %}
+          {% if property_line != '' %}
+            {% assign normalized_property_line = property_line | newline_to_br | replace: '<br>', '<br />' | replace: '<br/>', '<br />' %}
+            {% assign property_line_segments = normalized_property_line | split: '<br />' %}
+            {% for segment in property_line_segments %}
+              {% assign segment_clean = segment | strip %}
+              {% if segment_clean != '' %}
+                {% if not (property_state != '' and segment_clean == property_state and forloop.last) %}
+                  <div>{{ segment_clean }}</div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% elsif city or county or state or zip %}
+            <div>{{ city | default: '' }}{% if city and county %}, {% endif %}{{ county | default: '' }}{% if state %}, {{ state }}{% endif %}{% if zip %} {{ zip }}{% endif %}</div>
+          {% endif %}
+        {% endif %}
+        {% assign package_label = invoice_package_label | default: invoice_package_name | default: invoice_package_title | default: '' | strip %}
+        {% if package_label == '' %}
+          {% if pkg == 'advanced' %}
+            {% assign package_label = 'Advanced' %}
+          {% elsif pkg == 'standard' %}
+            {% assign package_label = 'Standard' %}
+          {% elsif pkg == 'basic' %}
+            {% assign package_label = 'Basic' %}
+          {% endif %}
+        {% endif %}
+        {% if package_label != '' %}
+          <div>{{ package_label }}</div>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+
+    {% assign invoice_line_description_value = invoice_line_description | default: invoice_line_item_description | default: '' | strip %}
+    {% assign invoice_line_sku_value = invoice_line_sku | default: invoice_sku | default: '' | strip %}
+    {% assign invoice_qty_value = qty %}
+    {% if invoice_qty_value == blank %}
+      {% assign invoice_qty_value = 1 %}
+    {% endif %}
+    {% assign invoice_unit_price_value = unit %}
+    {% if invoice_unit_price_value == blank %}
+      {% assign invoice_unit_price_value = 0 %}
+    {% endif %}
+    {% assign invoice_line_total_value = invoice_line_total %}
+    {% if invoice_line_total_value == blank %}
+      {% assign invoice_line_total_value = invoice_unit_price_value | times: invoice_qty_value %}
+    {% endif %}
+    {% assign invoice_qty_display = invoice_qty_formatted | default: invoice_qty_value %}
+    {% assign invoice_unit_price_display = invoice_unit_price_formatted | default: invoice_unit_price | default: invoice_unit_price_value %}
+    {% assign invoice_line_total_display = invoice_line_total_formatted | default: invoice_line_total_value %}
+
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th style="width:42%;">Description</th>
+          <th style="width:18%;">SKU</th>
+          <th style="width:10%;">Qty</th>
+          <th style="width:15%;">Unit Price (USD)</th>
+          <th style="width:15%;">Line Total (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {% if invoice_line_description_value != '' %}
+              {{ invoice_line_description_value }}
+            {% else %}
+              California Natural Hazard Disclosure Report &mdash;
+              {%- if pkg == 'advanced' -%}Advanced
+              {%- elsif pkg == 'standard' -%}Standard
+              {%- else -%}Basic
+              {%- endif -%}
+            {% endif %}
+          </td>
+          <td>
+            {% if invoice_line_sku_value != '' %}
+              {{ invoice_line_sku_value }}
+            {% else %}
+              {{ sku | default: 'NHDS-' | append: pkg | upcase }}
+            {% endif %}
+          </td>
+          <td class="inv-right">{{ invoice_qty_display }}</td>
+          <td class="inv-right">{{ invoice_unit_price_display }}</td>
+          <td class="inv-right">{{ invoice_line_total_display }}</td>
+        </tr>
+        {% assign processing_fee_qty = invoice_processing_fee_qty | default: 1 %}
+        {% assign processing_fee_unit_value = invoice_processing_fee_amount | default: fee %}
+        {% assign processing_fee_total_value = invoice_processing_fee_total %}
+        {% if processing_fee_total_value == blank %}
+          {% assign processing_fee_total_value = processing_fee_unit_value | times: processing_fee_qty %}
+        {% endif %}
+        {% assign processing_fee_total_value_number = processing_fee_total_value | append: '' | replace: '$', '' | replace: ',', '' | plus: 0 %}
+        {% if processing_fee_total_value_number != 0 %}
+        {% assign processing_fee_label = invoice_processing_fee_label | default: 'Processing / Delivery Fee' %}
+        {% assign processing_fee_sku = invoice_processing_fee_sku | default: 'FEE' %}
+        {% assign processing_fee_unit_display = invoice_processing_fee_formatted | default: invoice_processing_fee | default: processing_fee_unit_value %}
+        {% assign processing_fee_total_display = invoice_processing_fee_total_formatted | default: processing_fee_total_value %}
+        <tr>
+          <td>{{ processing_fee_label }}</td>
+          <td>{{ processing_fee_sku }}</td>
+          <td class="inv-right">{{ processing_fee_qty }}</td>
+          <td class="inv-right">{{ processing_fee_unit_display }}</td>
+          <td class="inv-right">{{ processing_fee_total_display }}</td>
+        </tr>
+        {% endif %}
+        {% assign discount_qty = invoice_discount_qty | default: 1 %}
+        {% assign discount_unit_value = invoice_discount_amount | default: disc %}
+        {% assign discount_total_value = invoice_discount_total %}
+        {% if discount_total_value == blank %}
+          {% assign discount_total_value = discount_unit_value | times: discount_qty %}
+        {% endif %}
+        {% assign discount_total_value_number = discount_total_value | append: '' | replace: '$', '' | replace: ',', '' | plus: 0 %}
+        {% if discount_total_value_number != 0 %}
+        {% assign discount_label = invoice_discount_label | default: 'Discount' %}
+        {% assign discount_sku = invoice_discount_sku | default: 'DISC' %}
+        {% assign discount_unit_display = invoice_discount_formatted | default: invoice_discount | default: discount_unit_value %}
+        {% assign discount_total_display = invoice_discount_total_formatted | default: discount_total_value %}
+        <tr>
+          <td>{{ discount_label }}</td>
+          <td>{{ discount_sku }}</td>
+          <td class="inv-right">{{ discount_qty }}</td>
+          <td class="inv-right">
+            {% if discount_unit_display contains '-' %}
+              {{ discount_unit_display }}
+            {% else %}
+              -{{ discount_unit_display }}
+            {% endif %}
+          </td>
+          <td class="inv-right">
+            {% if discount_total_display contains '-' %}
+              {{ discount_total_display }}
+            {% else %}
+              -{{ discount_total_display }}
+            {% endif %}
+          </td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+
+
+    {% assign subtotal_display = invoice_subtotal_formatted | default: invoice_subtotal | default: invoice_subtotal_amount | default: _subtotal %}
+    {% assign tax_display = invoice_tax_formatted | default: invoice_tax_amount | default: invoice_tax | default: _tax | default: 0 %}
+    {% assign total_due_display = invoice_total_due_formatted | default: invoice_total_due | default: invoice_total_amount | default: _total %}
+
+    <div class="inv-totalbox">
+      <table>
+        <tr>
+          <td>Subtotal</td>
+          <td class="inv-right">{{ subtotal_display }}</td>
+        </tr>
+        <tr>
+          <td>Sales Tax {% if tax_rate and tax_rate != 0 %}({{ tax_rate }}%){% endif %}</td>
+          <td class="inv-right">{{ tax_display | default: 0 }}</td>
+        </tr>
+        <tr>
+          <td>Total Due (USD)</td>
+          <td class="inv-right">{{ total_due_display }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="inv-notes">
+      <strong>Payment Method:</strong>
+      {% if escrow_company %}
+        Escrow billing &mdash; Please reference File # {{ escrow_file_number | default: report_id }} on remittance.
+      {% else %}
+        Card / Online payment {% if payment_txn_id %}(Txn: {{ payment_txn_id }}){% endif %}.
+      {% endif %}
+      <br/>
+      <span class="inv-muted">Questions? Contact {{ brand_email | default: 'info@safecanopy.ai' }}.</span>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
