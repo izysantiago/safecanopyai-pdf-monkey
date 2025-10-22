@@ -528,22 +528,27 @@
 
       {% assign smart_verify_note_text = smart_verify_validation_note | default: smart_verify_validation.note | default: 'Smart-Verify resolves conflicts internally and presents a single defensible answer per hazard. Official agency sources are prioritized over commercial datasets when conflicts occur.' %}
 
-      {% if _smart_verify_appendix_html == '' %}
-        {% assign _status = smart_verify_validation_status | default: smart_verify_validation.status | default: '' | downcase %}
-        {% assign _tagline = smart_verify_validation_tagline | default: smart_verify_validation.tagline | default: 'Verification Executed' %}
-        {% assign _badge = smart_verify_validation_badge_html | default: smart_verify_validation.badge_html | default: '' | strip %}
-        {% assign _badge_url = smart_verify_validation_badge_url | default: smart_verify_validation.badge_url | default: 'https://static.wixstatic.com/media/39685c_6a3f78185f7d46d6888398fa0dcac0d7~mv2.png' %}
+      {% assign _status = smart_verify_validation_status | default: smart_verify_validation.status | default: '' | downcase %}
+      {% assign _tagline = smart_verify_validation_tagline | default: smart_verify_validation.tagline | default: 'Verification Executed' %}
+      {% assign _badge = smart_verify_validation_badge_html | default: smart_verify_validation.badge_html | default: '' | strip %}
+      {% assign _badge_url = smart_verify_validation_badge_url | default: smart_verify_validation.badge_url | default: 'https://static.wixstatic.com/media/39685c_6a3f78185f7d46d6888398fa0dcac0d7~mv2.png' %}
 
-        {% if _badge != '' %}
-          {{ _badge | raw }}
-        {% else %}
-          {% if _status == 'validated' %}
-            <div class="ai-validation" style="display:flex;align-items:center;gap:6px;margin:8px 0;">
+      {%- comment -%}
+        Always render the validation line when status is 'validated',
+        regardless of whether a prebuilt appendix HTML block was injected.
+        If a custom badge HTML is provided, show it; otherwise use the URL.
+      {%- endcomment -%}
+      {% if _status == 'validated' %}
+        <div class="ai-validation" style="display:flex;align-items:center;gap:6px;margin:8px 0;">
+          <span class="ai-validation-badge">
+            {% if _badge != '' %}
+              {{ _badge | raw }}
+            {% else %}
               <img src="{{ _badge_url }}" alt="Verification badge" style="width:16px;height:16px;" />
-              <strong>{{ _tagline }}</strong>
-            </div>
-          {% endif %}
-        {% endif %}
+            {% endif %}
+          </span>
+          <strong>{{ _tagline }}</strong>
+        </div>
       {% endif %}
 
       {% if smart_verify_note_text != '' %}
