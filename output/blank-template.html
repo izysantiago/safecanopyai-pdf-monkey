@@ -1,0 +1,2151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>California Natural Hazard Disclosure Statement</title>
+  <style>
+    /* --- Typography & Layout --- */
+    html, body { margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 14px; line-height: 1.5; margin: 30px; }
+    h1 { text-align: center; font-size: 18px; text-transform: uppercase; margin: 0 0 12px; }
+    .section-title { font-weight: bold; margin-top: 24px; font-size: 15px; }
+    .muted { color:#666; font-size:12px; margin-top:6px; }
+
+    /* --- Tables --- */
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; table-layout: fixed; }
+    th, td { text-align: left; vertical-align: top; padding: 8px; border: 1px solid #000; word-wrap: break-word; white-space: normal; }
+    .hazard-matrix th { background: #f7f7f7; }
+
+    /* Fit matrix to one page */
+    .hazard-matrix { font-size: 12px; }
+    .hazard-matrix th, .hazard-matrix td { padding: 6px; }
+    .hazard-matrix td:nth-child(1),
+    .hazard-matrix td:nth-child(3),
+    .hazard-matrix td:nth-child(5) { width: 22px; }
+
+    /* NHDS official form styling */
+    .nhds-form { font-size: 13px; padding: 60px 0 36px; }
+    .nhds-form-continued { font-size: 13px; padding: 60px 0 36px; }
+    .hazard-block.liquefaction { margin-top: 16px; padding-top: 0; }
+    .nhds-signoff { margin-top: 26px; }
+    .nhds-form h1 { font-size: 18px; text-transform: uppercase; margin-bottom: 10px; }
+    .nhds-intro { margin: 8px 0; }
+    .nhds-paragraph { margin: 10px 0; }
+    .form-blank { display: inline-block; min-width: 110px; border-bottom: 1px solid #000; padding: 2px 6px; background: #e6edff; }
+    .form-blank.short { min-width: 90px; }
+    .form-blank.address { min-width: 320px; }
+    .hazard-block { margin-top: 16px; page-break-inside: avoid; break-inside: avoid; }
+    .hazard-block p { margin: 0; }
+    .hazard-options { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+    .form-choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 2px 4px; }
+    .form-choice.long { flex-basis: 100%; padding: 2px 4px; }
+    .choice-highlight { background: #e6edff; border-radius: 3px; display: inline-flex; align-items: center; }
+    .form-choice.long { flex-basis: 100%; }
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border: 1px solid #000; 
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1;
+      color: transparent;
+      font-family: 'Segoe UI Symbol', Arial, sans-serif;
+    }
+    .checkbox::after {
+      content: "";
+      line-height: 1;
+    }
+    .checkbox.checked {
+      border-color: #000;
+      color: #000;
+      font-weight: bold;
+    }
+    .checkbox.checked::after {
+      content: "\2714";
+      color: #000;
+    }
+    /* --- Page & Flow Controls --- */
+    .page {
+      position: relative;
+      page-break-after: always;
+      padding: 40px 0 72px; /* reserve space for fixed footer */
+      box-sizing: border-box;
+    }
+    .cover { text-align: center; page-break-after: always; }
+    .cover img.logo { height: 200px; margin-bottom: 16px; }
+    .cover-footer { margin-top: 28px; font-size: 12px; color: #666; }
+
+    tr, td, th { page-break-inside: avoid; }
+    p, div { page-break-inside: auto; }
+
+    .disclaimer { font-size: 12px; margin-top: 18px; }
+    .signature-block { margin-top: 22px; text-align: left; }
+    .signature-block label { display: block; margin-top: 10px; }
+    .signature-pad { border: 1px solid #ccc; width: 300px; height: 80px; margin-top: 4px; }
+
+    /* SOURCES and CONTACT page rules */
+    .sources-page {
+      page-break-before: always;
+      page-break-after: always;  /* legacy */
+      break-after: page;          /* modern */
+      font-size: 13px;
+      margin-top: 24px;
+    }
+    .sources-page ul { margin-top: 10px; line-height: 1.6; padding-left: 18px; }
+    .sources-page h1 { font-size: 15px; text-transform: uppercase; }
+
+    .contact-page {
+      page-break-before: always;
+      break-before: page;
+      font-size: 13px;
+      margin-top: 24px;
+    }
+    .disclaimer-page {
+      page-break-before: always;
+      break-before: page;
+    }
+    .contact-page ul { margin-top: 10px; line-height: 1.6; padding-left: 18px; }
+
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: right;
+      width: 95%;
+      font-size: 11px;
+      color: #555;
+      z-index: 0;
+    }
+
+    /* Appendix & Addendum styling */
+    .appendix { page-break-before: always; }
+    .appendix h1 { margin-bottom: 8px; font-size: 18px; text-transform: uppercase; }
+    .appendix .intro { color:#333; font-size:13px; margin-bottom: 10px; }
+    .appendix .ai-note { font-size: 12px; margin-top: 10px; }
+    .ai-validation { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: bold; color: #333; margin: 8px 0; flex-wrap: wrap; }
+    .ai-validation.muted { color: #555; font-weight: normal; }
+    .ai-validation .ai-validation-label { white-space: nowrap; }
+    .ai-validation .ai-validation-badge { display: inline-flex; align-items: center; justify-content: center; }
+    .ai-validation .ai-validation-badge svg,
+    .ai-validation .ai-validation-badge img { height: 18px; width: auto; }
+    .ai-validation .ai-validation-badge img { display: block; }
+    .appendix .ai-validation { margin-top: 12px; }
+    .appendix .ai-validation .ai-validation-seal { font-size: 14px; }
+    .appendix table { font-size: 12px; } /* Smart-Verify matrix font size */
+    /* Hazard map page */
+    .hazard-map-page { page-break-before: always; break-before: page; }
+    .hazard-map-page h2 { font-size: 18px; text-transform: uppercase; margin: 0 0 16px; }
+    .hazard-map-container { position: relative; margin: 18px 0; }
+    .hazard-map-container.has-inset { padding-right: 30%; }
+    .hazard-map-main { width: 100%; height: auto; border: 1px solid #000; }
+    .hazard-map-inset { position: absolute; top: 16px; right: 16px; width: 28%; min-width: 160px; border: 1px solid #000; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+    .legend { margin-top: 12px; font-size: 12px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+    .legend .swatch { display: inline-block; width: 16px; height: 16px; border: 1px solid #000; margin-right: 6px; vertical-align: middle; }
+    .legend .swatch.liquefy { background: rgba(255, 138, 0, 0.35); }
+    .legend .swatch.parcel { background: rgba(0, 102, 255, 0.15); }
+    .legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #d0021b; border: 1px solid #000; margin-right: 6px; }
+    .hazard-map-page .credits { margin-top: 14px; font-size: 12px; color: #555; }
+    .hazard-map-page .hazard-note { font-size: 12px; color: #555; margin-top: 12px; }
+    @media print {
+      .hazard-map-inset { box-shadow: none; }
+      .env-page-header,
+      .env-page-header * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* NEW: ensure ENV addendum is a separate page & same matrix font size */
+    .env-page {
+      page-break-before: always;   /* legacy */
+      break-before: page;          /* modern */
+      padding: 28px 0 36px;        /* balanced vertical buffer */
+    }
+    .env-page.env-page-continued {
+      padding-top: 28px;
+    }
+    .env-section-group { }
+    .env-page-header {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      text-align: center;
+      margin-bottom: 16px;
+      page-break-after: avoid;
+      break-after: avoid;
+      padding: 0 0 4px;
+    }
+    .env-page-header h1 {
+      margin: 0;
+      padding-top: 2px;
+    }
+    .env-page h1 { font-size: 18px; text-transform: uppercase; }
+    .env-matrix {
+      font-size: 12px; /* match Smart-Verify matrix */
+      page-break-inside: avoid;
+      break-inside: avoid;
+      -webkit-region-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+    .env-matrix-block {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      -webkit-region-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin-top: 18px;
+    }
+    .env-matrix-block.env-low-cost h2,
+    .env-matrix-block.env-low-cost h3,
+    .env-matrix-block.env-low-cost p > strong {
+      font-size: 18px;
+    }
+    .env-page .env-matrix-block:first-of-type,
+    .env-matrix-block.env-matrix-block-first {
+      margin-top: 0;
+    }
+    .env-matrix-block.env-matrix-block-first {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+    .env-retrofit-list { margin: 8px 0 0; padding-left: 20px; }
+    .env-retrofit-list li { margin-bottom: 6px; }
+
+    .badge { display:inline-block; padding: 2px 6px; border:1px solid #000; font-size: 11px; margin-left: 6px; }
+
+    /* Hard page-break utility + Terms typography */
+    .hardbreak {
+      height: 0; margin: 0; padding: 0; border: 0;
+      page-break-before: always; /* legacy */
+      break-before: page;        /* modern */
+      clear: both;
+    }
+    .sig-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px 24px; }
+    .sig-box  { min-height:90px; border:1px solid #bbb; padding:8px; }
+    .sig-cap  { font-weight:bold; margin:8px 0 6px; }
+    .page-break { page-break-before: always; break-before: page; }
+    .terms,
+    .terms-continued { page-break-before: always; break-before: page; padding-top: 40px; }
+    .terms p { font-size: 13px; line-height: 1.5; margin: 10px 0; }
+    .terms .section-title { margin-top: 18px; font-size: 15px; font-weight: bold; }
+
+    .terms-list { margin-top: 16px; }
+
+    .terms .terms-heading,
+
+    .terms-continued .terms-heading { font-size: 13px; font-weight: bold; margin: 14px 0 4px; }
+
+    .terms .terms-heading:first-child,
+
+    .terms-continued .terms-heading:first-child { margin-top: 0; }
+
+    .terms .terms-sub,
+
+    .terms-continued .terms-sub { font-size: 13px; margin: 4px 0 4px 18px; font-weight: normal; }
+
+    .terms .terms-sub.indent,
+
+    .terms-continued .terms-sub.indent { margin-left: 36px; }
+
+    /* (new) tiny, invisible Zoho Sign text-tag styling */
+    .zsign-tag { font-size: 1px; color: #fff; letter-spacing: 0; }
+  </style>
+</head>
+<body>
+
+  
+  
+  
+  
+    
+      
+    
+      
+    
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+  
+  
+  <div class="cover">
+    <img class="logo"
+         src="https://static.wixstatic.com/media/39685c_b04a1f9211434ec0b2efe6773e138d94~mv2.png"
+         alt="SafeCanopyAI" />
+
+    <h1>
+      California Natural Hazard Disclosure Statement
+      <span class="badge">
+        ADVANCED
+        STANDARD
+        BASIC
+        
+      </span>
+    </h1>
+
+    <p class="muted">Reference # </p>
+
+    
+      <p>
+        <strong>Parcel / APN:</strong>
+        
+        
+          &nbsp;&bull;&nbsp;<strong>Tax APN (unit):</strong> 
+        
+      </p>
+      
+        <p class="muted"></p>
+      
+      
+        <p class="muted">
+          APN &amp; Tax APN matchdo not match.
+          
+        </p>
+      
+    
+            <p><strong>Address:</strong> </p>
+    
+
+    <p><strong>Report Date:</strong> </p>
+    <div class="cover-footer">For inquiries, see final page</div>
+  </div>
+  
+
+  
+  <div class="page nhds-form">
+    <h1>CALIFORNIA NATURAL HAZARD DISCLOSURE STATEMENT</h1>
+
+    <p class="nhds-intro">
+      This Natural Hazard Disclosure Statement concerns the real property situated in the City of
+      <span class="form-blank short"></span>,
+      County of <span class="form-blank short"></span>,
+      State of California, described as:
+    </p>
+
+    
+    
+    <p class="nhds-intro"><span class="form-blank address"></span></p>
+
+    <p class="nhds-paragraph">
+      This Statement is a disclosure of natural hazards relating to the above described property in compliance with Section 1102 of the California Civil Code. It is not a warranty of any kind by the seller(s) in this transaction, and is not a substitute for any inspections or warranties the buyers may wish to obtain.
+    </p>
+
+    <p class="nhds-paragraph">
+      This Natural Hazard Disclosure Statement is made pursuant to Section 1102 of the Civil Code. Other statutes may require disclosures, depending upon the details of the particular real estate transaction (for example: special study zone and purchase-money liens on residential property). In addition, there may be local disclosure requirements in your particular city or county.
+    </p>
+
+    <p class="nhds-paragraph">
+      The Seller discloses the following information with the knowledge that even though this is not a warranty, prospective Buyers may rely on this information in deciding whether and on what terms to purchase the subject property. Seller hereby authorizes any agent(s) representing any principal(s) in this action to provide a copy of this statement to any person or entity in connection with any actual or anticipated sale of the property. The following are representations made by the Seller based on their knowledge and maps drawn by the state and federal governments. This information is a disclosure and is not intended to be part of any contract between the Buyer and Seller.
+    </p>
+
+    <div class="section-title" style="margin-top: 24px;">THIS REAL PROPERTY LIES WITHIN THE FOLLOWING HAZARDOUS AREA(S):</div>
+
+    <div class="hazard-block">
+      <p><strong>A SPECIAL FLOOD HAZARD AREA</strong> (Any type Zone "A" or "V") designated by the Federal Emergency Management Agency.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Do not know and information not available from local jurisdiction <span class="checkbox checked"></span></span>
+      </div>
+    </div>
+
+    <div class="hazard-block">
+      <p><strong>AN AREA OF POTENTIAL FLOODING</strong> shown on a dam failure inundation map.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Do not know and information not available from local jurisdiction <span class="checkbox checked"></span></span>
+      </div>
+    </div>
+
+    <div class="hazard-block">
+      <p><strong>A VERY HIGH FIRE HAZARD SEVERITY ZONE</strong> pursuant to Section 51178 or 51179 of the Government Code. The owner of this property is subject to the maintenance requirements of Section 51182 of the Government Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Do not know and information not available from local jurisdiction <span class="checkbox checked"></span></span>
+      </div>
+    </div>
+
+    <div class="hazard-block">
+      <p><strong>A WILDLAND AREA THAT MAY CONTAIN SUBSTANTIAL FOREST FIRE RISKS AND HAZARDS</strong> pursuant to Section 4125 of the Public Resources Code. The owner of this property is subject to the maintenance requirements of Section 4291 of the Public Resources Code. Additionally, it is not the state's responsibility to provide fire protection services to any building or structure located within the wildlands unless the Department of Forestry and Fire Protection has entered into a cooperative agreement with a local agency for those purposes pursuant to Section 4142 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Do not know and information not available from local jurisdiction <span class="checkbox checked"></span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page nhds-form nhds-form-continued">
+    <div class="hazard-block">
+      <p><strong>AN EARTHQUAKE FAULT ZONE</strong> pursuant to Section 2622 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Do not know and information not available from local jurisdiction <span class="checkbox checked"></span></span>
+      </div>
+
+    <div class="hazard-block">
+      <p><strong>A SEISMIC HAZARD ZONE: LANDSLIDE</strong> pursuant to Section 2696 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes (Landslide Zone) <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Map not yet released by state <span class="checkbox checked"></span></span>
+      </div>
+    </div>
+    <div class="hazard-block liquefaction">
+      <p><strong>A SEISMIC HAZARD ZONE: LIQUEFACTION</strong> pursuant to Section 2696 of the Public Resources Code.</p>
+      <div class="hazard-options">
+        <span class="form-choice choice-highlight">Yes (Liquefaction Zone) <span class="checkbox checked"></span></span>
+        <span class="form-choice choice-highlight">No <span class="checkbox checked"></span></span>
+        <span class="form-choice long choice-highlight">Map not yet released by state <span class="checkbox checked"></span></span>
+      </div>
+    </div>
+
+    <div class="nhds-signoff">
+      <div class="disclaimer">
+        These hazards may limit your ability to develop the real property, to obtain insurance, or to receive assistance after a disaster. The maps on which these disclosures are based estimate where natural hazards exist. They are not definitive indicators of whether or not a property will be affected by a natural disaster. Buyer(s) and Seller(s) may wish to obtain professional advice regarding those hazards and other hazards that may affect the property. Seller represents that the information herein is true and correct to the best of the Seller''s knowledge as of the date signed by the Seller.
+      </div>
+
+      <div class="signature-block">
+        <label>Signature of Seller:</label>
+        <div class="signature-pad">
+          <span class="zsign-tag">{{Signature}}</span>
+        </div>
+        <label>Date:
+          <span class="zsign-tag">{{Date}}</span>
+        </label>
+
+        <label>Signature of Buyer:</label>
+        <div class="signature-pad">
+          <span class="zsign-tag">{{Signature:Recipient2}}</span>
+        </div>
+        <label>Date:
+          <span class="zsign-tag">{{Date:Recipient2}}</span>
+        </label>
+      </div>
+
+      
+      
+      
+      
+
+      
+        <div class="page-break"></div>
+        <h3>Additional Signatures</h3>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 2</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller2}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller2}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 2</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer2}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer2}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 3</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller3}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller3}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 3</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer3}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer3}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 4</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller4}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller4}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 4</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer4}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer4}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 5</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller5}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller5}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 5</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer5}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer5}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 6</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller6}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller6}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 6</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer6}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer6}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 7</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller7}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller7}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 7</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer7}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer7}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 8</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller8}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller8}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 8</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer8}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer8}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 9</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller9}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller9}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 9</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer9}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer9}}</span></div>
+            </div>
+          </div>
+        </div>
+<div class="page-break"></div>
+<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
+          <div class="sig-grid">
+            <div>
+              <div class="sig-cap">Signature of Seller 10</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller10}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller10}}</span></div>
+            </div>
+            <div>
+              <div class="sig-cap">Signature of Buyer 10</div>
+              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer10}}</span></div>
+              <div style="margin-top:6px;">Date</div>
+              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer10}}</span></div>
+            </div>
+          </div>
+        </div><div class="appendix">
+      <h1>SMART-VERIFY NHDS APPENDIX <span class="badge">AI</span></h1>
+      <div class="intro">
+        Smart-Verify reconciles authoritative agency layers (FEMA, CGS, CAL FIRE, Cal OES) into a single answer per item.
+        Where official maps are not released or inconclusive, results are conservative (&ldquo;Do not know&rdquo;).
+      </div>
+
+      <table>
+        <tr>
+          <th>Hazard</th>
+          <th>Answer</th>
+          <th>Why</th>
+          <th>Source</th>
+          <th>Map Updated</th>
+        </tr>
+
+        
+        
+          
+          
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                
+                
+                  ; Backup: 
+                
+              </td>
+              <td></td>
+            </tr>
+            
+              <tr>
+                <td colspan="5"><em>Obligations:</em> </td>
+              </tr>
+            
+          
+        
+      </table>
+
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+
+      
+        
+      
+        
+        
+        <div class="smart-verify-note ai-validation muted" style="display:flex;align-items:center;gap:6px;">
+          
+            <span class="ai-validation-badge" role="img" aria-label="Validation badge"></span>
+          
+            <span class="ai-validation-badge" role="img" aria-label="Validation badge"><img src="" alt="Validation badge" style="width:16px;height:16px;" /></span>
+          
+          <strong></strong>
+        </div>
+      
+        
+          
+            
+              
+            
+              
+          
+        
+        <div class="smart-verify-note ai-validation muted" style="display:flex;align-items:center;gap:6px;">
+          
+            <img src="" alt="executed badge" style="width:16px;height:16px;" />
+          
+          <strong></strong>
+        </div>
+      
+
+      
+        <p class="ai-note muted">Notes: </p>
+      
+    </div>
+  
+
+  
+  
+  
+  
+    <div class="page hazard-map-page">
+      <h2>NHDS Hazard Map</h2>
+      
+        <div class="hazard-map-container has-inset">
+          
+            <img class="hazard-map-main" src="" alt="Hazard map" />
+          
+          
+            <img class="hazard-map-inset" src="" alt="Inset hazard map" />
+          
+        </div>
+      
+      
+        <div class="legend">
+          
+            
+            
+            
+            
+            
+              
+                <span>
+                  <span class="dot" style="background: ; border-color: ;"></span>
+                  
+                </span>
+              
+                <span>
+                  <span class="swatch" style="background: ; border-color: ;"></span>
+                  
+                </span>
+              
+            
+          
+        </div>
+      
+        <div class="legend">
+          <span><span class="swatch liquefy"></span> Liquefaction Zone</span>
+          <span><span class="swatch parcel"></span> Parcel</span>
+          <span><span class="dot"></span> Subject Property</span>
+        </div>
+      
+      
+        <div class="hazard-note">
+          
+            <strong></strong>
+          
+          
+            <p></p>
+          
+          
+            <ul>
+              
+                
+                
+                
+                  <li>: </li>
+                
+                  <li></li>
+                
+              
+            </ul>
+          
+            <ul>
+              
+                <li></li>
+              
+            </ul>
+          
+            <p></p>
+          
+            <p></p>
+          
+        </div>
+      
+      
+      
+        
+          <p class="credits"></p>
+        
+          <p class="credits"></p>
+        
+          <p class="credits"></p>
+        
+      
+        <p class="credits">Basemap &copy; Google. Hazard overlays &copy; CGS and CAL OES. Generated .</p>
+      
+    </div>
+  
+
+  
+  
+    
+      
+        <div class="env-matrix-block env-matrix-block-first">
+          <div class="section-title">Fire History</div>
+
+          <table class="env-matrix">
+          <tr>
+            <th style="width:19%">Item</th>
+            <th style="width:16%">Answer</th>
+            <th style="width:49%">Explanation</th>
+            <th style="width:16%">Map Updated</th>
+          </tr>
+
+          
+          
+            
+            
+              
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            
+          
+
+          
+          
+            
+            
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            
+          
+          </table>
+        </div>
+      
+    
+    
+      
+      
+      
+      
+
+      
+        
+          
+            
+            
+            
+          
+        
+      
+
+      
+        
+        
+          
+            
+            
+            
+          
+        
+        
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">U.S. EPA Radon Zone</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>U.S. EPA Radon Zone</td>
+              <td></td>
+              <td>
+                
+                  
+                
+                   County is classified as  per the U.S. EPA Radon Zone Map ().
+                  Radon testing is recommended before purchase or occupancy.
+                
+              </td>
+              <td></td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+            
+            
+            
+          
+        
+      
+
+      
+        
+        
+          
+        
+      
+      
+        
+        
+        
+        
+        
+        
+        
+      
+
+      
+      
+        
+      
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Naturally Occuring Asbestos Advisory</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td>Naturally Occuring Asbestos Advisory</td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  Naturally occurring asbestos potential is summarized using the U.S. Geological Survey's NOA mapping with a one-mile advisory buffer. Disturbing soil in mapped areas may release asbestos fibers; consult qualified professionals before excavation or grading.
+                
+                
+                  <br/>
+                  Nearest mapped occurrence:  () .
+                
+                
+                  <br/>
+                
+              </td>
+              <td></td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Tsunami Hazard Areas</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  California Geological Survey tsunami mapping indicates whether the property lies within a potential tsunami inundation area.
+                
+              </td>
+              <td>California Geological Survey</td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+        
+        
+        
+      
+      
+      
+        
+      
+      
+      
+        
+      
+      
+      
+        
+      
+      
+      
+      
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Formerly Used Defense Sites (USACE)</div>
+            <table class="env-matrix" style="margin-top:10px;">
+              <tr>
+                <th style="width:19%">Item</th>
+                <th style="width:16%">Answer</th>
+                <th style="width:49%">Explanation</th>
+                <th style="width:16%">Map Updated</th>
+              </tr>
+              
+                <tr>
+                  <td></td>
+                  <td>Do not know</td>
+                  <td>
+                    
+                      
+                    
+                      
+                    
+                      No Formerly Used Defense Sites were identified within the search area.
+                    
+                    
+                      <br />
+                    
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>Formerly Used Defense Sites (USACE)</td>
+                  <td>Do not know</td>
+                  <td>
+                    
+                    <br />
+                  </td>
+                  <td></td>
+                </tr>
+              
+              
+                
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          
+                            
+                          
+                            Located  from the subject property per USACE FUDS inventory.
+                          
+                            Identified by the USACE Formerly Used Defense Sites program.
+                          
+                        </td>
+                        <td></td>
+                      </tr>
+                    
+                  
+                
+                
+                  
+                    
+                    
+                    
+                    
+                    
+                    
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          
+                            
+                          
+                            Located  from the subject property per USACE FUDS inventory.
+                          
+                            Identified by the USACE Formerly Used Defense Sites program.
+                          
+                        </td>
+                        <td></td>
+                      </tr>
+                    
+                  
+                
+              
+            </table>
+          </div>
+        
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Superfund (SEMS) Nearby</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  No additional site details provided by EPA FRS.
+                
+              </td>
+              <td>Not provided by EPA FRS</td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+            
+            
+            
+            
+          
+        
+      
+
+      
+      
+      
+      
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">WellSTAR: Oil and Gas Wells</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  Proximity to active or idle oil and gas wells is summarized using the CalGEM WellSTAR dataset.
+                
+              </td>
+              <td>WellSTAR</td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Groundwater Quality - Aquifer Risk</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  Modeled groundwater quality risk reflects California's 2023 aquifer assessment, highlighting domestic wells, small systems, and disadvantaged areas where modeled contamination exceeds the 0.5% threshold.
+                
+              </td>
+              <td></td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Mold Advisory</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  Indoor mold thrives in persistent moisture; identify and repair leaks quickly, dry wet materials within 24 to 48 hours, and engage qualified mold professionals if significant growth is observed.
+                
+              </td>
+              <td>N/A</td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+
+      
+        <div class="env-matrix-block">
+          <div class="section-title">Megan&rsquo;s Law Advisory</div>
+
+          <table class="env-matrix" style="margin-top:10px;">
+          <tr>
+            <th style="width:19%">Item</th>
+            <th style="width:16%">Answer</th>
+            <th style="width:49%">Explanation</th>
+            <th style="width:16%">Map Updated</th>
+          </tr>
+          <tr>
+            <td>Megan&rsquo;s Law: Registered Sex Offender Disclosure</td>
+            <td>California DOJ Megan&rsquo;s Law Notice</td>
+            <td>Pursuant to Penal Code Section 290.46, information about specified registered sex offenders is available to the public on the California Department of Justice Megan&rsquo;s Law website at www.meganslaw.ca.gov.</td>
+            <td>California Department of Justice</td>
+          </tr>
+          </table>
+        </div>
+      
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Right-to-Farm Disclosure</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  Important Farmland within one mile is summarized using California's Farmland Mapping and Monitoring Program (FMMP) to provide Right-to-Farm Act notice.
+                
+              </td>
+              <td>California DOC FMMP</td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+
+      
+        
+          <div class="env-matrix-block">
+            <div class="section-title">Lead-based Paint Advisory</div>
+
+            <table class="env-matrix" style="margin-top:10px;">
+            <tr>
+              <th style="width:19%">Item</th>
+              <th style="width:16%">Answer</th>
+              <th style="width:49%">Explanation</th>
+              <th style="width:16%">Map Updated</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                
+                  
+                
+                  Residential lead-based paint advisories summarize federal requirements (24 CFR Part 35) for properties built before 1978.
+                
+              </td>
+              <td>N/A</td>
+            </tr>
+            </table>
+          </div>
+        
+      
+      
+
+      
+        
+        
+          
+        
+        
+        
+        
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+        
+          
+        
+        
+        
+        
+          
+            
+          
+            
+          
+            
+          
+        
+        
+          <div class="env-matrix-block env-low-cost">
+            <div class="section-title">Low-Cost Retrofit List</div>
+            
+              <p></p>
+            
+            
+            
+              <ul class="env-retrofit-list">
+                
+                  
+                  
+                  <li>
+                    <strong></strong>: 
+                    
+                  </li>
+                
+              </ul>
+            
+              <p></p>
+            
+          </div>
+        
+      
+      
+    </div>
+    
+    
+      
+        <div class="page env-page env-page-continued">
+          <div class="env-page-header">
+            <h1>ENVIRONMENTAL RISK ADDENDUM STANDARD CONTINUED</h1>
+          </div>
+          <div class="env-section-group">
+            
+            
+            
+            
+              
+              
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                
+                
+                
+                
+                  
+                    
+                  
+                    
+                  
+              
+                
+                
+                  
+                  
+                    
+                      
+                    
+                  
+                    
+                      
+                    
+                  
+                  
+                  
+                
+                
+
+                
+                  
+                    
+                    
+                      
+                      
+                        
+                          
+                            
+                          
+                        
+                          
+                            
+                          
+                        
+                        
+                        
+                      
+                      
+                    
+                  
+                  
+                    
+                    
+                      
+                      
+                        
+                          
+                            
+                          
+                        
+                          
+                            
+                          
+                        
+                        
+                        
+                      
+                      
+                    
+                  
+                
+              
+            
+          </div>
+        </div>
+      
+    
+      <div class="page env-page">
+        <div class="env-page-header">
+          <h1>ENVIRONMENTAL RISK ADDENDUM STANDARD</h1>
+        </div>
+        <div class="env-section-group">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+    
+
+  
+
+  
+  <div class="sources-page">
+    <h1>Sources</h1>
+    <p>This report was generated using authoritative data from federal, state, and local agencies:</p>
+
+    <ul>
+      <li>FEMA NFHL</li>
+      <li>Cal OES Dam Inundation</li>
+      <li>CGS - Alquist-Priolo Fault Zones</li>
+      <li>CGS - Seismic Hazard Zones (Landslide)</li>
+      <li>CGS - Seismic Hazard Zones (Liquefaction)</li>
+      <li>CAL FIRE - Very High Fire Hazard Severity Zones (LRA)</li>
+      <li>CAL FIRE - State Responsibility Areas (SRA)</li>
+      <li>CA Statewide Parcels Public</li>
+      <li>Environmental Risk Addendum - NIFC WFIGS - Interagency Fire Perimeters</li>
+      <li>Environmental Risk Addendum - CAL FIRE FRAP - Historical Fire Perimeters</li>
+      <li>Environmental Risk Addendum - Tsunami Hazard Areas</li>
+      <li>Environmental Risk Addendum - Formerly Used Defense Sites (USACE)</li>
+      <li>Environmental Risk Addendum - CalGEM WellSTAR Oil &amp; Gas Wells (Layer WellSTAR Wells)</li>
+      <li>Environmental Risk Addendum - Groundwater Quality - California 2023 Aquifer Risk Assessment</li>
+      <li>Environmental Risk Addendum - Mold Advisory - California Department of Public Health Mold Guidance</li>
+      <li>Environmental Risk Addendum - Megan&rsquo;s Law Advisory - California DOJ Megan&rsquo;s Law Website</li>
+      <li>Environmental Risk Addendum - California Geological Survey (CGS) NOA Resources (Layer USGS Asbestos Occurrences)</li>
+      <li>Environmental Risk Addendum - California Important Farmland (FMMP) (Layer Important Farmland 2022)</li>
+      <li>Environmental Risk Addendum - Right-to-Farm Disclosure - The Farmland Mapping and Monitoring Program</li>
+    </ul>
+  </div>
+
+  
+
+<div class="page terms">
+
+  <h1 class="section-title" style="text-align:center;">NATURAL HAZARD DISCLOSURE REPORT TERMS &amp; CONDITIONS</h1>
+
+  <p>
+
+    This SafeCanopyAI Natural Hazard Disclosure Report (&ldquo;Report&rdquo;) is subject to each of the following Terms and Conditions:
+
+  </p>
+
+  <div class="terms-list">
+
+    <p class="terms-heading">1. Definitions &amp; Interpretation</p>
+
+    <p class="terms-sub">1.1 &ldquo;Report&rdquo; means the Natural Hazard Disclosure Report (and, if applicable, related tax, environmental, or supplemental disclosures) prepared by Provider for the subject Property.</p>
+
+    <p class="terms-sub">1.2 &ldquo;Recipient(s)&rdquo; means Seller(s), Buyer(s), and their designated agents in the transaction for which the Report is ordered.</p>
+
+    <p class="terms-sub">1.3 &ldquo;Property&rdquo; means the real property described in the Report, as identified by address, APN, and legal description.</p>
+
+    <p class="terms-sub">1.4 &ldquo;Data Sources&rdquo; means public agency maps, governmental databases, and third-party vendor datasets used in preparing the Report.</p>
+
+    <p class="terms-sub">1.5 &ldquo;Hazard Zones&rdquo; means the six (6) statutorily required natural hazard areas (flood, dam inundation, fire severity, wildland fire, fault, seismic hazards) plus any additional advisory areas included in the Report.</p>
+
+    <p class="terms-sub">1.6 &ldquo;Effective Date&rdquo; means the date on which the Report is delivered to the Recipient(s).</p>
+
+    <p class="terms-heading">2. Scope &amp; Purpose</p>
+
+    <p class="terms-sub">2.1 The Report is intended to assist Seller(s) and Buyer(s) (and their agents) in complying with California&rsquo;s Natural Hazard Disclosure law (Cal. Civil Code &sect;1103 et seq.) by identifying whether the Property lies within certain mapped hazard zones and providing supplemental disclosures.</p>
+
+    <p class="terms-sub">2.2 The Report is strictly based on mapped public records and database information; no on-site inspection, visual survey, geotechnical testing, or soil/structural analysis is performed.</p>
+
+    <p class="terms-sub">2.3 The Report does not constitute a title report, survey, engineering opinion, insurance policy, guarantee, or warranty of any kind (express or implied).</p>
+
+    <p class="terms-sub">2.4 The Report does not opine whether the Property can be developed, improved, or is free of restrictions, liens, or other encumbrances.</p>
+
+    <p class="terms-heading">3. Reliance, Use &amp; Restriction</p>
+
+    <p class="terms-sub">3.1 The Report is for the exclusive use of the Recipient(s) in the single escrow/transaction for which it is ordered.</p>
+
+    <p class="terms-sub">3.2 No third parties (other than Seller(s), Buyer(s), and their licensees) may rely on it or use it for any purpose, unless expressly consented in writing by Provider.</p>
+
+    <p class="terms-sub">3.3 The Report may not be assigned, copied, or used in subsequent transactions without Provider&rsquo;s prior written consent.</p>
+
+    <p class="terms-heading">4. Data Accuracy, Limitations &amp; Updates</p>
+
+    <p class="terms-sub">4.1 Provider relies on Data Sources, and does not independently verify their accuracy or completeness.</p>
+
+    <p class="terms-sub">4.2 Changes in public maps or hazard designations after the Effective Date are not reflected; Provider has no duty to update the Report.</p>
+
+    <p class="terms-sub">4.3 Some hazards or environmental conditions may exist which are not captured in the databases.</p>
+
+    <p class="terms-sub">4.4 In cases where the APN or address is incorrect or ambiguous, the Report&rsquo;s findings are contingent on the accuracy of input data.</p>
+
+  </div>
+
+</div>
+
+<div class="page terms terms-continued">
+
+  <h1 class="section-title" style="text-align:center;">TERMS &amp; CONDITIONS (CONTINUED)</h1>
+
+  <div class="terms-list">
+
+    <p class="terms-heading">5. Additional Disclosures &amp; Local/Advisory Information</p>
+
+    <p class="terms-sub">5.1 The Report may include additional disclosure layers or advisory information (e.g. airport noise influence, military ordnance, radon potential, local safety element overlays, Mello-Roos/1915 bond data, energy/efficiency notices, lead/mold, etc.).</p>
+
+    <p class="terms-sub">5.2 Such additional disclosures are provided &ldquo;as is&rdquo; from public or vendor sources and are subject to the same limitations.</p>
+
+    <p class="terms-sub">5.3 Local jurisdictions may have more restrictive or recent hazard or zoning data; Recipients should verify with local agencies.</p>
+
+    <p class="terms-heading">6. Disclaimer of Warranties</p>
+
+    <p class="terms-sub">Except as explicitly stated otherwise, Provider disclaims all warranties, express or implied, including warranties of accuracy, timeliness, completeness, merchantability, or fitness for a particular purpose.</p>
+
+    <p class="terms-heading">7. Indemnity &amp; Defense</p>
+
+    <p class="terms-sub">7.1 Provider shall defend, indemnify, and hold harmless Recipient(s), and the Seller(s)&rsquo;s real estate agents or brokers, from and against claims, liabilities, losses, and expenses (including attorneys&rsquo; fees) arising from Provider&rsquo;s gross negligence, willful misconduct, or material breach of these Terms, subject to the liability cap below.</p>
+
+    <p class="terms-sub">7.2 Recipient(s) shall promptly notify Provider in writing of any claim, and Provider shall have sole control of the defense (including choice of counsel).</p>
+
+    <p class="terms-heading">8. Limitation of Liability</p>
+
+    <p class="terms-sub">8.1 To the fullest extent permitted by California law, Provider&rsquo;s aggregate liability to all Recipient(s) for any claims arising from or relating to the Report shall not exceed the lesser of:</p>
+
+    <p class="terms-sub indent">(a) the difference in fair market value of the Property as of the Report date caused by a proven error in the Report; or</p>
+
+    <p class="terms-sub indent">(b) the limits under Provider&rsquo;s Errors &amp; Omissions insurance at the time of claim resolution.</p>
+
+    <p class="terms-sub">8.2 Provider shall not be liable for punitive, special, incidental, or consequential damages.</p>
+
+    <p class="terms-sub">8.3 This limitation applies even if any limited remedy does not satisfy its essential purpose.</p>
+
+    <p class="terms-heading">9. Termination / Cancellation</p>
+
+    <p class="terms-sub">9.1 If escrow is canceled before the Report is released, Recipient(s) may cancel the order and receive a refund (subject to incurred costs).</p>
+
+    <p class="terms-sub">9.2 Once the Report is released, the order is non-refundable. Notwithstanding, if the transaction fails to occur, Provider will waive the fee upon notification of cancellation.</p>
+
+  </div>
+
+</div>
+
+<div class="page terms terms-continued">
+
+  <h1 class="section-title" style="text-align:center;">TERMS &amp; CONDITIONS (CONTINUED)</h1>
+
+  <div class="terms-list">
+
+    <p class="terms-heading">10. Confidentiality</p>
+
+    <p class="terms-sub">10.1 The Report and supporting data are confidential and may not be shared beyond permitted Recipient(s).</p>
+
+    <p class="terms-sub">10.2 Recipient(s) must not reproduce or extract underlying raw data except as necessary for transaction use.</p>
+
+    <p class="terms-heading">11. Dispute Resolution / Arbitration</p>
+
+    <p class="terms-sub">11.1 Disputes shall be resolved by binding arbitration under the rules of an agreed provider, in the county where the Property is located.</p>
+
+    <p class="terms-sub">11.2 Arbitrator shall apply California law and may award any remedy available in court.</p>
+
+    <p class="terms-sub">11.3 The prevailing party is entitled to recover reasonable attorneys&rsquo; fees and costs.</p>
+
+    <p class="terms-heading">12. Governing Law &amp; Venue</p>
+
+    <p class="terms-sub">These Terms are governed by California law. Venue is proper in the county where the Property is located.</p>
+
+    <p class="terms-heading">13. Severability &amp; Survival</p>
+
+    <p class="terms-sub">If any provision is invalid, the remainder remains in effect. Provisions concerning disclaimer, limitation of liability, indemnity, confidentiality, dispute resolution, and survival remain enforceable after termination.</p>
+
+    <p class="terms-heading">14. Entire Agreement / Amendment</p>
+
+    <p class="terms-sub">These Terms, along with the Report, constitute the entire agreement. No amendment or waiver is effective unless in writing and signed by both Provider and the affected Recipient(s).</p>
+
+    <p class="terms-heading">15. Notices</p>
+
+    <p class="terms-sub">All notices must be in writing and delivered to the addresses specified in the Report ordering documents.</p>
+
+  </div>
+
+</div>
+
+  <div class="page disclaimer-page" style="font-size:13px;">
+    <h1 class="section-title" style="text-align:center;">DISCLAIMER OF LIABILITY</h1>
+
+    <p>
+      This Natural Hazard Disclosure Report ("Report") is prepared solely for informational purposes based on data obtained from public records and third-party sources believed to be reliable. SafeCanopyAI (the "Provider") does not independently verify such data and makes no representation or warranty, express or implied, regarding its accuracy, timeliness, or completeness.
+    </p>
+
+    <p>
+      Responsibility for disclosures remain with the seller and the seller's agents under California Civil Code Â§1103.2. This report is a tool to assist in compliance, but it does not displace the statutory duty. This report is based solely on public maps and records. No site inspection has been conducted. No warranties are provided regarding accuracy or fitness for a particular purpose. The liability of Provider, its officers, employees, and affiliates, for any claim, damage, or loss arising out of or related to this report, whether in contract, tort, or otherwise, shall in no event exceed the lesser of lesser of: (a) the diminution in the property's fair market value as of the report date caused by a proven error, or (b) the applicable limits under the Provider's professional liability or errors and omissions insurance.
+    </p>
+  </div>
+  
+  <div class="contact-page" style="text-align: center;">
+    <img class="logo"
+         src=""
+         alt="SafeCanopyAI"
+         style="height: 100px; display: block; margin: 0 auto;" />
+    <h1>Contact Us</h1>
+    <p>If you have questions or need additional information, please reach out to:</p>
+    <ul style="list-style: none; padding: 0;">
+      <li>Email: <strong>info@safecanopy.ai</strong></li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Generated by SafeCanopyAI
+  </div>
+
+  
+
+  <style>
+    .invoice-page {
+      page-break-before: always;   /* legacy */
+      break-before: page;          /* modern */
+      font-family: Arial, Helvetica, sans-serif;
+      color: #000;
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 30px;
+    }
+    .inv-topbar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .inv-title { font-size: 22px; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+    .inv-meta { text-align: right; font-size: 12px; }
+    .inv-meta div { margin: 2px 0; }
+    .inv-issuer { margin: 8px 0 18px 0; font-size: 12px; }
+    .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 16px; }
+    .inv-card { border: 1px solid #000; padding: 10px; }
+    .inv-card h3 { margin: 0 0 8px; font-size: 14px; text-transform: uppercase; }
+    .inv-muted { color: #555; font-size: 12px; }
+    .inv-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .inv-table th, .inv-table td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
+    .inv-table th { background: #f7f7f7; }
+    .inv-right { text-align: right; }
+    .inv-totalbox { width: 50%; margin-left: auto; margin-top: 10px; border: 1px solid #000; padding: 0; }
+    .inv-totalbox table { width: 100%; border-collapse: collapse; }
+    .inv-totalbox td { border-bottom: 1px solid #000; padding: 8px; }
+    .inv-totalbox tr:last-child td { border-bottom: none; font-weight: bold; }
+    .inv-notes { margin-top: 14px; font-size: 12px; }
+  </style>
+
+  
+  
+  
+    
+      
+    
+      
+    
+  
+
+  
+  
+  
+    
+  
+    
+  
+  
+  
+  
+
+  
+  
+    
+    
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+  
+  
+
+  <div class="invoice-page">
+    <div class="inv-topbar">
+      <div>
+        <h2 class="inv-title">Invoice</h2>
+        <div class="inv-issuer">
+          <strong>SafeCanopyAI</strong><br/>
+          Tel: 415-562-5341<br/>
+          Email: info@safecanopy.ai &mdash; 
+        </div>
+      </div>
+      <div class="inv-meta">
+        <div><strong>Invoice #:</strong> </div>
+        <div><strong>Invoice Date:</strong> </div>
+      </div>
+    </div>
+
+    <div class="inv-grid">
+      <div class="inv-card">
+        <h3>Bill To (Escrow / Ordering Party)</h3>
+        
+          <div><strong></strong></div>
+          <div>Attn: </div>
+          <div class="inv-muted"></div>
+          <div>File #: </div>
+        
+          <div><strong></strong></div>
+          <div>Contact: </div>
+          <div class="inv-muted"></div>
+        
+      </div>
+
+      <div class="inv-card">
+        <h3>Property</h3>
+        
+          <div><strong>APN:</strong> N/A</div>
+        
+          <div><strong>Address:</strong> N/A</div>
+          
+          
+          
+            
+            
+            
+              
+              
+                
+                  <div></div>
+                
+              
+            
+          
+            <div>, ,  </div>
+          
+        
+        
+        
+          
+            
+          
+            
+          
+            
+          
+        
+        
+          <div></div>
+        
+      </div>
+      </div>
+    </div>
+
+    
+    
+    
+    
+      
+    
+    
+    
+      
+    
+    
+    
+      
+    
+    
+    
+    
+
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th style="width:42%;">Description</th>
+          <th style="width:18%;">SKU</th>
+          <th style="width:10%;">Qty</th>
+          <th style="width:15%;">Unit Price (USD)</th>
+          <th style="width:15%;">Line Total (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            
+              
+            
+              California Natural Hazard Disclosure Report &mdash;
+              Advanced
+              Standard
+              Basic
+              
+            
+          </td>
+          <td>
+            
+              
+            
+              
+            
+          </td>
+          <td class="inv-right"></td>
+          <td class="inv-right"></td>
+          <td class="inv-right"></td>
+        </tr>
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+        
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="inv-right"></td>
+          <td class="inv-right"></td>
+          <td class="inv-right"></td>
+        </tr>
+        
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+        
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="inv-right"></td>
+          <td class="inv-right">
+            
+              
+            
+              -
+            
+          </td>
+          <td class="inv-right">
+            
+              
+            
+              -
+            
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    
+    
+    
+
+    <div class="inv-totalbox">
+      <table>
+        <tr>
+          <td>Subtotal</td>
+          <td class="inv-right"></td>
+        </tr>
+        <tr>
+          <td>Sales Tax (%)</td>
+          <td class="inv-right"></td>
+        </tr>
+        <tr>
+          <td>Total Due (USD)</td>
+          <td class="inv-right"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="inv-notes">
+      <strong>Payment Method:</strong>
+      
+        Escrow billing &mdash; Please reference File #  on remittance.
+      
+        Card / Online payment (Txn: ).
+      
+      <br/>
+      <span class="inv-muted">Questions? Contact info@safecanopy.ai.</span>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
