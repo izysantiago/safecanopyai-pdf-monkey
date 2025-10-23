@@ -28,30 +28,8 @@ $content = Get-Content -Path $resolvedTemplate -Raw
 $placeholderProtector = [char]0x27EC, [char]0x27ED
 $content = [regex]::Replace(
     $content,
-    "{{\s*(Signature(:[^\}]+)?|Date(:[^\}]+)?)\s*}}",
+    "{{\s*((Signature|SIGNATURE)(:[^\}]+)?|(Date|DATE)(:[^\}]+)?)\s*}}",
     { param($m) $m.Value.Replace("{", $placeholderProtector[0]).Replace("}", $placeholderProtector[1]) }
-)
-
-# Normalize composite Zoho placeholders that are built from concatenated pieces.
-$content = [regex]::Replace(
-    $content,
-    "{{\s*""\{\{SIGNATURE:Seller""\s*}}\s*{{\s*seller_index\s*}}\s*{{\s*""\}\}""\s*}}",
-    "$($placeholderProtector[0])$($placeholderProtector[0])SIGNATURE:Seller#$($placeholderProtector[1])$($placeholderProtector[1])"
-)
-$content = [regex]::Replace(
-    $content,
-    "{{\s*""\{\{DATE:Seller""\s*}}\s*{{\s*seller_index\s*}}\s*{{\s*""\}\}""\s*}}",
-    "$($placeholderProtector[0])$($placeholderProtector[0])DATE:Seller#$($placeholderProtector[1])$($placeholderProtector[1])"
-)
-$content = [regex]::Replace(
-    $content,
-    "{{\s*""\{\{SIGNATURE:Buyer""\s*}}\s*{{\s*buyer_index\s*}}\s*{{\s*""\}\}""\s*}}",
-    "$($placeholderProtector[0])$($placeholderProtector[0])SIGNATURE:Buyer#$($placeholderProtector[1])$($placeholderProtector[1])"
-)
-$content = [regex]::Replace(
-    $content,
-    "{{\s*""\{\{DATE:Buyer""\s*}}\s*{{\s*buyer_index\s*}}\s*{{\s*""\}\}""\s*}}",
-    "$($placeholderProtector[0])$($placeholderProtector[0])DATE:Buyer#$($placeholderProtector[1])$($placeholderProtector[1])"
 )
 
 # Strip Liquid comments and logic tags.
@@ -90,42 +68,6 @@ $content = [regex]::Replace(
 
 # Restore Zoho Sign merge tags.
 $content = $content.Replace($placeholderProtector[0], "{").Replace($placeholderProtector[1], "}")
-
-# Expand additional signature placeholders into fixed Zoho Sign anchor tags.
-$additionalStart = $content.IndexOf('<h3>Additional Signatures</h3>')
-if ($additionalStart -ge 0) {
-    $appendixIndex = $content.IndexOf('<div class="appendix">', $additionalStart)
-    if ($appendixIndex -gt $additionalStart) {
-$pairSections = New-Object System.Collections.Generic.List[string]
-for ($i = 2; $i -le 10; $i++) {
-$section = @"
-<div class="sig-pair" style="break-inside: avoid; page-break-inside: avoid; margin-top: 24px;">
-          <div class="sig-grid">
-            <div>
-              <div class="sig-cap">Signature of Seller $i</div>
-              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Seller$($i)}}</span></div>
-              <div style="margin-top:6px;">Date</div>
-              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Seller$($i)}}</span></div>
-            </div>
-            <div>
-              <div class="sig-cap">Signature of Buyer $i</div>
-              <div class="sig-box"><span class="zsign-tag">{{SIGNATURE:Buyer$($i)}}</span></div>
-              <div style="margin-top:6px;">Date</div>
-              <div class="sig-box" style="height:24px;"><span class="zsign-tag">{{DATE:Buyer$($i)}}</span></div>
-            </div>
-          </div>
-        </div>
-"@
-[void]$pairSections.Add($section)
-if ($i -lt 10) {
-[void]$pairSections.Add('<div class="page-break"></div>')
-}
-}
-
-$replacement = "<h3>Additional Signatures</h3>`r`n" + ($pairSections -join "`r`n")
-        $content = $content.Substring(0, $additionalStart) + $replacement + $content.Substring($appendixIndex, $content.Length - $appendixIndex)
-    }
-}
 
 # Normalize whitespace a bit for cleaner output.
 $content = [regex]::Replace($content, "(\r?\n){3,}", "`r`n`r`n")

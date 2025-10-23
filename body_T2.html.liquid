@@ -6,9 +6,9 @@
   <style>
     /* --- Typography & Layout --- */
     html, body { margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 14px; line-height: 1.5; margin: 24px; }
-    h1 { text-align: center; font-size: 18px; text-transform: uppercase; margin: 0 0 10px; }
-    .section-title { font-weight: bold; margin-top: 20px; font-size: 15px; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #000; font-size: 14px; line-height: 1.5; margin: 30px; }
+    h1 { text-align: center; font-size: 18px; text-transform: uppercase; margin: 0 0 12px; }
+    .section-title { font-weight: bold; margin-top: 24px; font-size: 15px; }
     .muted { color:#666; font-size:12px; margin-top:6px; }
 
     /* --- Tables --- */
@@ -24,32 +24,32 @@
     .hazard-matrix td:nth-child(5) { width: 22px; }
 
     /* NHDS official form styling */
-    .nhds-form { font-size: 13px; padding: 36px 0 24px; }
-    .nhds-form-continued { font-size: 13px; padding: 18px 0 0; }
+    .nhds-form { font-size: 13px; padding: 60px 0 36px; }
+    .nhds-form-continued { font-size: 13px; padding: 60px 0 36px; }
     .hazard-block.liquefaction { margin-top: 16px; padding-top: 0; }
-    .nhds-signoff { margin-top: 18px; }
+    .nhds-signoff { margin-top: 26px; }
     .nhds-form h1 { font-size: 18px; text-transform: uppercase; margin-bottom: 10px; }
     .nhds-intro { margin: 8px 0; }
-    .nhds-paragraph { margin: 8px 0; }
+    .nhds-paragraph { margin: 10px 0; }
     .form-blank { display: inline-block; min-width: 110px; border-bottom: 1px solid #000; padding: 2px 6px; background: #e6edff; }
     .form-blank.short { min-width: 90px; }
     .form-blank.address { min-width: 320px; }
-    .hazard-block { margin-top: 12px; page-break-inside: avoid; break-inside: avoid; }
+    .hazard-block { margin-top: 16px; page-break-inside: avoid; break-inside: avoid; }
     .hazard-block p { margin: 0; }
-    .hazard-options { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 10px 24px; }
-    .form-choice { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; padding: 1px 4px; }
-    .form-choice.long { flex-basis: 100%; padding: 1px 4px; }
+    .hazard-options { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+    .form-choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 2px 4px; }
+    .form-choice.long { flex-basis: 100%; padding: 2px 4px; }
     .choice-highlight { background: #e6edff; border-radius: 3px; display: inline-flex; align-items: center; }
     .form-choice.long { flex-basis: 100%; }
     .checkbox {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border: 1px solid #000; 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: #fff;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1;
       color: transparent;
       font-family: 'Segoe UI Symbol', Arial, sans-serif;
@@ -71,7 +71,7 @@
     .page {
       position: relative;
       page-break-after: always;
-      padding: 32px 0 56px; /* reserve space for fixed footer */
+      padding: 40px 0 72px; /* reserve space for fixed footer */
       box-sizing: border-box;
     }
     .cover { text-align: center; page-break-after: always; }
@@ -82,13 +82,8 @@
     p, div { page-break-inside: auto; }
 
     .disclaimer { font-size: 12px; margin-top: 18px; }
-    .signature-block {
-      margin-top: 12px;
-      text-align: left;
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-    .signature-block label { display: block; margin-top: 6px; }
+    .signature-block { margin-top: 22px; text-align: left; }
+    .signature-block label { display: block; margin-top: 10px; }
     .signature-pad { border: 1px solid #ccc; width: 300px; height: 80px; margin-top: 4px; }
 
     /* SOURCES and CONTACT page rules */
@@ -229,25 +224,9 @@
       break-before: page;        /* modern */
       clear: both;
     }
-    .sig-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(130px, 1fr));
-      gap: 8px 10px;
-      margin-top: 8px;
-    }
-    .sig-item { display: flex; flex-direction: column; gap: 2px; }
-    .sig-box  { min-height:40px; border:1px solid #bbb; padding:3px; }
-    .sig-cap  { font-weight:bold; margin:0; }
-    .sig-date { display:flex; align-items:center; gap:2px; font-size:12px; }
-    .sig-date-line {
-      flex:1;
-      min-height: 12px;
-      border-bottom: 1px solid #bbb;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 2px;
-    }
-    .sig-date-line .zsign-tag { display:inline-block; min-width: 0; }
+    .sig-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px 24px; }
+    .sig-box  { min-height:90px; border:1px solid #bbb; padding:8px; }
+    .sig-cap  { font-weight:bold; margin:8px 0 6px; }
     .page-break { page-break-before: always; break-before: page; }
     .terms,
     .terms-continued { page-break-before: always; break-before: page; padding-top: 40px; }
@@ -410,7 +389,9 @@
       </div>
     </div>
 
-    <div class="nhds-form nhds-form-continued">
+  </div>
+
+  <div class="page nhds-form nhds-form-continued">
     <div class="hazard-block">
       <p><strong>AN EARTHQUAKE FAULT ZONE</strong> pursuant to Section 2622 of the Public Resources Code.</p>
       <div class="hazard-options">
@@ -444,155 +425,30 @@
       <div class="signature-block">
         <h3>Signer Acknowledgments</h3>
         <div class="sig-grid">
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Seller</div>
+          <div>
+            <div class="sig-cap">Signature of Signer 1</div>
             <div class="sig-box">
               <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer1}}{% endraw %}</span>
             </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer1}}{% endraw %}</span>
-              </span>
+            <div style="margin-top:6px;">Date</div>
+            <div class="sig-box" style="height:24px;">
+              <span class="zsign-tag">{% raw %}{{DATE:Signer1}}{% endraw %}</span>
             </div>
           </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Buyer</div>
+          <div>
+            <div class="sig-cap">Signature of Signer 2</div>
             <div class="sig-box">
               <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer2}}{% endraw %}</span>
             </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer2}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 3</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer3}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer3}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 4</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer4}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer4}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 5</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer5}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer5}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 6</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer6}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer6}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 7</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer7}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer7}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 8</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer8}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer8}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 9</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer9}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer9}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 10</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer10}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer10}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 11</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer11}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer11}}{% endraw %}</span>
-              </span>
-            </div>
-          </div>
-          <div class="sig-item">
-            <div class="sig-cap">Signature of Signer 12</div>
-            <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer12}}{% endraw %}</span>
-            </div>
-            <div class="sig-date">
-              <span>Date:</span>
-              <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer12}}{% endraw %}</span>
-              </span>
+            <div style="margin-top:6px;">Date</div>
+            <div class="sig-box" style="height:24px;">
+              <span class="zsign-tag">{% raw %}{{DATE:Signer2}}{% endraw %}</span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
   {%- comment -%} ====================== SMART-VERIFY NHDS APPENDIX ====================== {%- endcomment -%}
   {% if smart_verify %}
     <div class="appendix">
