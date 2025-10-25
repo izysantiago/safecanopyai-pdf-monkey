@@ -84,7 +84,7 @@
     .disclaimer { font-size: 12px; margin-top: 18px; }
     .signature-block { margin-top: 22px; text-align: left; }
     .signature-block label { display: block; margin-top: 10px; }
-    .signature-pad { border: 1px solid #ccc; width: 300px; height: 80px; margin-top: 4px; }
+    .signature-pad { border: 0; width: 1px; height: 1px; margin: 0; padding: 0; display: inline-block; }
 
     /* SOURCES and CONTACT page rules */
     .sources-page {
@@ -225,7 +225,7 @@
       clear: both;
     }
     .sig-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px 24px; }
-    .sig-box  { min-height:90px; border:1px solid #bbb; padding:8px; }
+    .sig-box  { min-height: 0; border: 0; padding: 0; }
     .sig-cap  { font-weight:bold; margin:8px 0 6px; }
     .page-break { page-break-before: always; break-before: page; }
     .terms,
@@ -426,23 +426,23 @@
         <h3>Signer Acknowledgments</h3>
         <div class="sig-grid">
           <div>
-            <div class="sig-cap">Signature of Signer 1</div>
+            <div class="sig-cap">Signature of Seller</div>
             <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer1}}{% endraw %}</span>
+              <span class="zsign-tag">{% raw %}{{SIGNATURE:Seller}}{% endraw %}</span>
             </div>
             <div style="margin-top:6px;">Date</div>
             <div class="sig-box" style="height:24px;">
-              <span class="zsign-tag">{% raw %}{{DATE:Signer1}}{% endraw %}</span>
+              <span class="zsign-tag">{% raw %}{{DATE:Seller}}{% endraw %}</span>
             </div>
           </div>
           <div>
-            <div class="sig-cap">Signature of Signer 2</div>
+            <div class="sig-cap">Signature of Buyer</div>
             <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer2}}{% endraw %}</span>
+              <span class="zsign-tag">{% raw %}{{SIGNATURE:Buyer}}{% endraw %}</span>
             </div>
             <div style="margin-top:6px;">Date</div>
             <div class="sig-box" style="height:24px;">
-              <span class="zsign-tag">{% raw %}{{DATE:Signer2}}{% endraw %}</span>
+              <span class="zsign-tag">{% raw %}{{DATE:Buyer}}{% endraw %}</span>
             </div>
           </div>
         </div>

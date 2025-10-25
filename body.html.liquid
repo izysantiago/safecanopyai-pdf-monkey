@@ -89,7 +89,7 @@
       break-inside: avoid;
     }
     .signature-block label { display: block; margin-top: 6px; }
-    .signature-pad { border: 1px solid #ccc; width: 300px; height: 80px; margin-top: 4px; }
+    .signature-pad { border: 0; width: 1px; height: 1px; margin: 0; padding: 0; display: inline-block; }
 
     /* SOURCES and CONTACT page rules */
     .sources-page {
@@ -236,7 +236,7 @@
       margin-top: 8px;
     }
     .sig-item { display: flex; flex-direction: column; gap: 2px; }
-    .sig-box  { min-height:40px; border:1px solid #bbb; padding:3px; }
+    .sig-box  { min-height: 0; border: 0; padding: 0; }
     .sig-cap  { font-weight:bold; margin:0; }
     .sig-date { display:flex; align-items:center; gap:2px; font-size:12px; }
     .sig-date-line {
@@ -447,24 +447,24 @@
           <div class="sig-item">
             <div class="sig-cap">Signature of Seller</div>
             <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer1}}{% endraw %}</span>
+              <span class="zsign-tag">{% raw %}{{SIGNATURE:Seller}}{% endraw %}</span>
             </div>
             <div class="sig-date">
               <span>Date:</span>
               <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer1}}{% endraw %}</span>
+                <span class="zsign-tag">{% raw %}{{DATE:Seller}}{% endraw %}</span>
               </span>
             </div>
           </div>
           <div class="sig-item">
             <div class="sig-cap">Signature of Buyer</div>
             <div class="sig-box">
-              <span class="zsign-tag">{% raw %}{{SIGNATURE:Signer2}}{% endraw %}</span>
+              <span class="zsign-tag">{% raw %}{{SIGNATURE:Buyer}}{% endraw %}</span>
             </div>
             <div class="sig-date">
               <span>Date:</span>
               <span class="sig-date-line">
-                <span class="zsign-tag">{% raw %}{{DATE:Signer2}}{% endraw %}</span>
+                <span class="zsign-tag">{% raw %}{{DATE:Buyer}}{% endraw %}</span>
               </span>
             </div>
           </div>
